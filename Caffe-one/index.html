@@ -1,1 +1,319 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oasis & Oak | Boutique Cafe in Jumeirah</title>
+    
+    <!-- Google Fonts: Inter (EN) & Cairo (AR) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: '#0B4635',
+                        gold: '#C5A059',
+                        sand: '#E8D8C8',
+                        beige: '#F5F0EB',
+                        dark: '#1A1A1A'
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                        cairo: ['Cairo', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'glass': '0 8px 32px 0 rgba(11, 70, 53, 0.1)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Bilingual Display Logic */
+        html[lang="en"] .ar { display: none !important; }
+        html[lang="ar"] .en { display: none !important; }
+        
+        /* Font Family Toggling */
+        html[lang="en"] body { font-family: 'Inter', sans-serif; }
+        html[lang="ar"] body { font-family: 'Cairo', sans-serif; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #F5F0EB; }
+        ::-webkit-scrollbar-thumb { background: #C5A059; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #0B4635; }
+
+        /* Smooth Utilities */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-beige text-dark antialiased overflow-x-hidden selection:bg-gold selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-500 py-4" id="navbar">
+        <div class="container mx-auto px-6 lg:px-12">
+            <div class="glass-card rounded-full px-6 py-3 flex justify-between items-center shadow-glass">
+                <!-- Logo -->
+                <a href="#" class="text-2xl font-bold text-emerald flex items-center gap-2">
+                    <i class="fa-solid fa-leaf text-gold"></i>
+                    <span class="en">Oasis & Oak</span>
+                    <span class="ar">أواسيس وأوك</span>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8 rtl:space-x-reverse">
+                    <a href="#about" class="text-emerald hover:text-gold transition-colors duration-300 font-medium">
+                        <span class="en">About</span><span class="ar">من نحن</span>
+                    </a>
+                    <a href="#menu" class="text-emerald hover:text-gold transition-colors duration-300 font-medium">
+                        <span class="en">Menu</span><span class="ar">القائمة</span>
+                    </a>
+                    <a href="#booking" class="text-emerald hover:text-gold transition-colors duration-300 font-medium">
+                        <span class="en">Booking</span><span class="ar">الحجز</span>
+                    </a>
+                    <a href="#location" class="text-emerald hover:text-gold transition-colors duration-300 font-medium">
+                        <span class="en">Location</span><span class="ar">الموقع</span>
+                    </a>
+                </div>
+
+                <!-- Language Toggle & Mobile Menu Btn -->
+                <div class="flex items-center gap-4">
+                    <button onclick="toggleLanguage()" class="text-sm font-bold text-emerald border border-emerald/20 px-3 py-1 rounded-full hover:bg-emerald hover:text-white transition-all duration-300">
+                        <span class="en">عربي</span>
+                        <span class="ar">EN</span>
+                    </button>
+                    <button class="md:hidden text-emerald text-2xl focus:outline-none">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1920&q=80" alt="Cafe Interior" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-emerald/60 mix-blend-multiply"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-beige/90"></div>
+        </div>
+
+        <!-- Hero Content -->
+        <div class="relative z-10 text-center px-6 max-w-4xl mx-auto mt-20" data-aos="fade-up" data-aos-duration="1000">
+            <span class="block text-gold font-semibold tracking-widest uppercase mb-4 text-sm md:text-base">
+                <span class="en">Jumeirah, Dubai</span>
+                <span class="ar">جميرا، دبي</span>
+            </span>
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-lg">
+                <span class="en">Where Desert <br> Meets the Cup</span>
+                <span class="ar">حيث تلتقي الصحراء <br> بفنجان القهوة</span>
+            </h1>
+            <p class="text-lg md:text-xl text-white/90 mb-10 max-w-2xl mx-auto font-light">
+                <span class="en">Experience a harmonious blend of Khaleeji hospitality and modern specialty coffee in a sanctuary of elegance.</span>
+                <span class="ar">استمتع بمزيج متناغم من الضيافة الخليجية والقهوة المختصة الحديثة في ملاذ من الأناقة.</span>
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#menu" class="bg-gold text-white px-8 py-4 rounded-full font-medium hover:bg-white hover:text-emerald hover:scale-105 transition-all duration-300 shadow-lg">
+                    <span class="en">Explore Menu</span>
+                    <span class="ar">استكشف القائمة</span>
+                </a>
+                <a href="#booking" class="bg-white/20 backdrop-blur-md border border-white/30 text-white px-8 py-4 rounded-full font-medium hover:bg-white hover:text-emerald hover:scale-105 transition-all duration-300 shadow-lg">
+                    <span class="en">Reserve a Table</span>
+                    <span class="ar">احجز طاولة</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="py-24 bg-beige relative">
+        <div class="container mx-auto px-6 lg:px-12">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <!-- Image -->
+                <div class="w-full lg:w-1/2 relative" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="absolute inset-0 bg-gold rounded-3xl transform translate-x-4 translate-y-4 opacity-50"></div>
+                    <img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?auto=format&fit=crop&w=800&q=80" alt="Pouring Coffee" class="relative z-10 rounded-3xl shadow-2xl w-full object-cover h-[500px]" />
+                </div>
+                <!-- Text -->
+                <div class="w-full lg:w-1/2" data-aos="fade-left" data-aos-duration="1000">
+                    <h2 class="text-4xl md:text-5xl font-bold text-emerald mb-6">
+                        <span class="en">Rooted in Tradition,<br>Brewed for Today.</span>
+                        <span class="ar">جذور في التقاليد،<br>نُحضّرها لليوم.</span>
+                    </h2>
+                    <div class="w-20 h-1 bg-gold mb-8"></div>
+                    <p class="text-lg text-emerald/80 mb-6 leading-relaxed">
+                        <span class="en">At Oasis & Oak, we celebrate the rich heritage of Khaleeji hospitality. Nestled in the heart of Jumeirah, our boutique cafe is a cultural fusion where the warmth of the desert meets the sophistication of modern brewing techniques.</span>
+                        <span class="ar">في أواسيس وأوك، نحتفل بالتراث الغني للضيافة الخليجية. يقع مقهانا في قلب جميرا، وهو مزيج ثقافي حيث يلتقي دفء الصحراء بتطور تقنيات التحضير الحديثة.</span>
+                    </p>
+                    <p class="text-lg text-emerald/80 mb-8 leading-relaxed">
+                        <span class="en">Every cup tells a story of ethically sourced beans, artisanal craftsmanship, and a welcoming space designed for connection.</span>
+                        <span class="ar">كل كوب يروي قصة حبوب البن المستوردة بأخلاقية، والحرفية اليدوية، ومساحة ترحيبية مصممة للتواصل.</span>
+                    </p>
+                    <div class="flex items-center gap-4 text-emerald font-semibold">
+                        <div class="w-12 h-12 rounded-full bg-sand flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-mug-hot"></i>
+                        </div>
+                        <span class="en">Premium Specialty Coffee</span>
+                        <span class="ar">قهوة مختصة فاخرة</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-24 bg-white">
+        <div class="container mx-auto px-6 lg:px-12">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="text-gold font-semibold tracking-widest uppercase text-sm">
+                    <span class="en">Our Masterpieces</span>
+                    <span class="ar">روائعنا</span>
+                </span>
+                <h2 class="text-4xl md:text-5xl font-bold text-emerald mt-2">
+                    <span class="en">Signature Creations</span>
+                    <span class="ar">إبداعاتنا المميزة</span>
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- Item 1 -->
+                <div class="bg-beige rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-500 group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=600&q=80" alt="Spanish Latte" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-8 relative">
+                        <div class="absolute top-0 right-6 transform -translate-y-1/2 bg-gold text-white px-4 py-1 rounded-full font-bold shadow-md rtl:left-6 rtl:right-auto">
+                            <span class="en">35 AED</span><span class="ar">٣٥ درهم</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-emerald mb-3">
+                            <span class="en">Oasis Spanish Latte</span>
+                            <span class="ar">سبانيش لاتيه الواحة</span>
+                        </h3>
+                        <p class="text-emerald/70">
+                            <span class="en">A velvety blend of our house espresso, sweetened condensed milk, and a hint of desert vanilla. Served over ice or perfectly steamed.</span>
+                            <span class="ar">مزيج مخملي من الإسبريسو الخاص بنا، حليب مكثف محلى، ولمسة من فانيليا الصحراء. يقدم مثلجاً أو مبخراً بامتياز.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="bg-beige rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-500 group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1464195244916-405fa0a82545?auto=format&fit=crop&w=600&q=80" alt="Saffron Tres Leches" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-8 relative">
+                        <div class="absolute top-0 right-6 transform -translate-y-1/2 bg-gold text-white px-4 py-1 rounded-full font-bold shadow-md rtl:left-6 rtl:right-auto">
+                            <span class="en">45 AED</span><span class="ar">٤٥ درهم</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-emerald mb-3">
+                            <span class="en">Saffron Tres Leches</span>
+                            <span class="ar">تريس ليتشيز بالزعفران</span>
+                        </h3>
+                        <p class="text-emerald/70">
+                            <span class="en">A decadent sponge cake soaked in three types of milk, infused with premium Iranian saffron and topped with whipped cream.</span>
+                            <span class="ar">كعكة إسفنجية غنية منقوعة في ثلاثة أنواع من الحليب، ممزوجة بالزعفران الإيراني الفاخر ومغطاة بالكريمة المخفوقة.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="bg-beige rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-500 group" data-aos="fade-up" data-aos-delay="300">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1557006021-b85faa2bc5e2?auto=format&fit=crop&w=600&q=80" alt="Karak Latte" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-8 relative">
+                        <div class="absolute top-0 right-6 transform -translate-y-1/2 bg-gold text-white px-4 py-1 rounded-full font-bold shadow-md rtl:left-6 rtl:right-auto">
+                            <span class="en">30 AED</span><span class="ar">٣٠ درهم</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-emerald mb-3">
+                            <span class="en">Signature Karak Latte</span>
+                            <span class="ar">كرك لاتيه المميز</span>
+                        </h3>
+                        <p class="text-emerald/70">
+                            <span class="en">A modern twist on a local favorite. Rich black tea, cardamom, and spices combined with a shot of espresso and micro-foamed milk.</span>
+                            <span class="ar">لمسة عصرية على المشروب المحلي المفضل. شاي أسود غني، هيل، وتوابل ممزوجة مع جرعة إسبريسو وحليب مبخر.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block border-2 border-emerald text-emerald px-8 py-3 rounded-full font-medium hover:bg-emerald hover:text-white transition-colors duration-300">
+                    <span class="en">View Full Menu</span>
+                    <span class="ar">عرض القائمة الكاملة</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking" class="py-24 bg-emerald relative overflow-hidden">
+        <!-- Decorative Elements -->
+        <div class="absolute top-0 left-0 w-64 h-64 bg-gold rounded-full mix-blend-overlay filter blur-3xl opacity-20 transform -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-sand rounded-full mix-blend-overlay filter blur-3xl opacity-10 transform translate-x-1/3 translate-y-1/3"></div>
+
+        <div class="container mx-auto px-6 lg:px-12 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <!-- Text -->
+                <div class="w-full lg:w-5/12 text-white" data-aos="fade-right">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                        <span class="en">Reserve Your Experience</span>
+                        <span class="ar">احجز تجربتك</span>
+                    </h2>
+                    <p class="text-white/80 text-lg mb-8">
+                        <span class="en">Secure your spot at Oasis & Oak. Whether it's a quiet morning coffee or an evening gathering, we look forward to hosting you.</span>
+                        <span class="ar">احجز مكانك في أواسيس وأوك. سواء كانت قهوة صباحية هادئة أو تجمع مسائي، نتطلع لاستضافتك.</span>
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4">
+                            <i class="fa-regular fa-clock text-gold text-xl w-6"></i>
+                            <div>
+                                <p class="font-semibold"><span class="en">Opening Hours</span><span class="ar">ساعات العمل</span></p>
+                                <p class="text-white/70"><span class="en">Daily: 7:00 AM - 11:00 PM</span><span class="ar">يومياً: ٧:٠٠ ص - ١١:٠٠ م</span></p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <i class="fa-solid fa-phone text-gold text-xl w-6"></i>
+                            <div>
+                                <p class="font-semibold"><span class="en">Contact</span><span class="ar">اتصل بنا</span></p>
+                                <p class="text-white/70">+971 4 123 4567</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form -->
+                <div class="w-full lg:w-7/12" data-aos="fade-left">
+                    <div class="bg-white/10 backdrop-blur-xl border border-white/20 p-8 md:p-10 rounded-3xl shadow-2xl">
+                        <form class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-white/80 text-sm mb-2"><span class="en">Name</span><span class="ar">الاسم</span></label>
+                                    <input type="text" class="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:border-gold transition-colors" placeholder="John Doe">
+                                </div>
+                                <div>
+                                    <label class="block text-white/80 text-sm mb-2"><span class="en">Phone</span><span class="ar">رقم الهاتف</span></label>
+                                    <input type="tel" class="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:border-gold transition-colors" placeholder="+971 50 000 0000">
+                                </div>
+                                <div>
+                                    <label class="block text-white/80 text-sm mb-2"><span class="en">Date</span><span class="ar">التاريخ</span></label>
+     
