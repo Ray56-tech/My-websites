@@ -1,459 +1,705 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" class="scroll-smooth">
+<html lang="en" dir="ltr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oasis & Oak | Boutique Cafe in Jumeirah</title>
-    
-    <!-- Google Fonts: Inter (EN) & Cairo (AR) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- AOS Animation CSS -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zafaran Café — Dubai</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&family=Tajawal:wght@300;400;500;700&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C; --gold-light: #E8C97A; --gold-dim: #8A6A28;
+    --cream: #F8F3EA; --dark: #1A1410; --mid: #2E2318; --white: #FDFAF5;
+  }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--dark); color: var(--cream);
+    font-family: 'Montserrat', sans-serif; font-weight: 300;
+    overflow-x: hidden; cursor: none;
+  }
+  html[lang="ar"] body { font-family: 'Tajawal', sans-serif; }
+  html[lang="ar"] .font-display,
+  html[lang="ar"] .hero-title,
+  html[lang="ar"] .section-title,
+  html[lang="ar"] .card-name,
+  html[lang="ar"] .t-text,
+  html[lang="ar"] .nav-logo,
+  html[lang="ar"] .card-price { font-family: 'Amiri', serif !important; }
+  html[lang="ar"] { direction: rtl; }
+  html[lang="ar"] .nav-links a::after { left: auto; right: 0; }
+  html[lang="ar"] .about-badge { right: auto; left: -30px; }
+  html[lang="ar"] .about-line { left: auto; right: -30px; }
+  html[lang="ar"] .about-text { padding-right: 0; padding-left: 20px; }
+  html[lang="ar"] .menu-card::before { left: auto; right: 0; }
+  html[lang="ar"] .card-num { right: auto; left: 40px; font-family: 'Amiri', serif; }
+  html[lang="ar"] .testimonial-card { text-align: right; }
+  html[lang="ar"] .testimonial-card::before { content: '«'; left: auto; right: 28px; font-family: 'Amiri', serif; }
+  html[lang="ar"] .reserve-form { text-align: right; }
+  html[lang="ar"] .form-input { text-align: right; }
+  html[lang="ar"] .footer-brand p { text-align: right; }
+  html[lang="ar"] .footer-socials { flex-direction: row-reverse; }
+  html[lang="ar"] .footer-col { text-align: right; }
+  html[lang="ar"] .location-bar { flex-direction: row-reverse; }
+  html[lang="ar"] .hero-title { line-height: 1.2; letter-spacing: 0; }
+  html[lang="ar"] .hero-title em { font-style: normal; }
+  html[lang="ar"] .section-title { line-height: 1.4; letter-spacing: 0; }
+  html[lang="ar"] .section-title em { font-style: normal; }
+  html[lang="ar"] .hero-eyebrow,
+  html[lang="ar"] .section-eyebrow { letter-spacing: 0.05em; }
+  html[lang="ar"] .nav-links a,
+  html[lang="ar"] .nav-cta,
+  html[lang="ar"] .btn-primary,
+  html[lang="ar"] .btn-ghost,
+  html[lang="ar"] .menu-tab,
+  html[lang="ar"] .reserve-btn { font-family: 'Tajawal', sans-serif; letter-spacing: 0; text-transform: none; }
+  html[lang="ar"] .nav-links a { font-size: 14px; }
+  html[lang="ar"] .nav-cta { font-size: 13px; }
+  html[lang="ar"] .btn-primary, html[lang="ar"] .btn-ghost { font-size: 14px; }
+  html[lang="ar"] .section-body { font-size: 15px; line-height: 2.1; }
+  html[lang="ar"] .card-desc { font-size: 13px; line-height: 2; }
+  html[lang="ar"] .stat-label { font-family: 'Tajawal', sans-serif; letter-spacing: 0; font-size: 12px; text-transform: none; }
+  html[lang="ar"] .form-label { font-family: 'Tajawal', sans-serif; letter-spacing: 0; font-size: 12px; text-transform: none; }
+  html[lang="ar"] .form-input { font-family: 'Tajawal', sans-serif; font-size: 14px; }
+  html[lang="ar"] .t-author { font-family: 'Tajawal', sans-serif; letter-spacing: 0; text-transform: none; font-size: 13px; }
+  html[lang="ar"] .t-role { font-family: 'Tajawal', sans-serif; font-size: 12px; }
+  html[lang="ar"] .footer-col h4 { font-family: 'Tajawal', sans-serif; letter-spacing: 0; font-size: 13px; text-transform: none; }
+  html[lang="ar"] .footer-col li,
+  html[lang="ar"] .footer-col a { font-family: 'Tajawal', sans-serif; font-size: 14px; }
+  html[lang="ar"] .footer-copy { font-family: 'Tajawal', sans-serif; letter-spacing: 0; font-size: 12px; }
+  html[lang="ar"] .g-placeholder .label { font-family: 'Tajawal', sans-serif; letter-spacing: 0; font-size: 13px; text-transform: none; }
+  html[lang="ar"] .g-overlay-text { font-family: 'Amiri', serif; font-style: normal; }
+  html[lang="ar"] .section-eyebrow { font-family: 'Tajawal', sans-serif; letter-spacing: 0.05em; font-size: 12px; flex-direction: row-reverse; justify-content: flex-end; }
+  html[lang="ar"] .section-eyebrow::before { display: none; }
+  html[lang="ar"] .section-eyebrow::after { content: ''; display: block; width: 30px; height: 1px; background: var(--gold); }
+  html[lang="ar"] .hero-eyebrow { font-family: 'Tajawal', sans-serif; letter-spacing: 0.05em; font-size: 13px; }
+  html[lang="ar"] .marquee-item { font-family: 'Amiri', serif; font-style: normal; letter-spacing: 0; font-size: 17px; }
+  html[lang="ar"] .marquee-inner { animation-direction: reverse; }
+  html[lang="ar"] .hero-sub { letter-spacing: 0; line-height: 2; font-size: 15px; }
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        emerald: '#0B4635',
-                        gold: '#C5A059',
-                        sand: '#E8D8C8',
-                        beige: '#F5F0EB',
-                        dark: '#1A1A1A'
-                    },
-                    fontFamily: {
-                        inter: ['Inter', 'sans-serif'],
-                        cairo: ['Cairo', 'sans-serif'],
-                    },
-                    boxShadow: {
-                        'glass': '0 8px 32px 0 rgba(11, 70, 53, 0.1)',
-                    }
-                }
-            }
-        }
-    </script>
+  /* LANGUAGE TOGGLE */
+  .lang-toggle {
+    display: flex; align-items: center;
+    border: 1px solid rgba(201,168,76,0.3); overflow: hidden; flex-shrink: 0;
+  }
+  .lang-btn {
+    background: none; border: none; color: var(--cream);
+    font-size: 11px; font-weight: 500; letter-spacing: 0.15em;
+    padding: 8px 15px; cursor: none;
+    transition: background 0.3s, color 0.3s; opacity: 0.5;
+    font-family: 'Montserrat', sans-serif;
+  }
+  .lang-btn[data-lang="ar"] { font-family: 'Tajawal', sans-serif; letter-spacing: 0; font-size: 13px; }
+  .lang-btn.active { background: var(--gold); color: var(--dark); opacity: 1; }
+  .lang-btn:hover:not(.active) { opacity: 0.9; color: var(--gold-light); }
+  .lang-divider { width: 1px; height: 20px; background: rgba(201,168,76,0.25); flex-shrink: 0; }
 
-    <style>
-        /* Bilingual Display Logic */
-        html[lang="en"] .ar { display: none !important; }
-        html[lang="ar"] .en { display: none !important; }
-        
-        /* Font Family Toggling */
-        html[lang="en"] body { font-family: 'Inter', sans-serif; }
-        html[lang="ar"] body { font-family: 'Cairo', sans-serif; }
+  /* CURSOR */
+  .cursor { position: fixed; width: 12px; height: 12px; background: var(--gold); border-radius: 50%; pointer-events: none; z-index: 9999; transition: transform 0.15s ease; transform: translate(-50%,-50%); }
+  .cursor-ring { position: fixed; width: 36px; height: 36px; border: 1px solid var(--gold-light); border-radius: 50%; pointer-events: none; z-index: 9998; transition: transform 0.35s cubic-bezier(.25,.46,.45,.94), opacity 0.3s; transform: translate(-50%,-50%); opacity: 0.6; }
+  .cursor.hover { transform: translate(-50%,-50%) scale(2.5); background: var(--gold-light); }
+  .cursor-ring.hover { transform: translate(-50%,-50%) scale(1.5); opacity: 0; }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #F5F0EB; }
-        ::-webkit-scrollbar-thumb { background: #C5A059; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #0B4635; }
+  body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 9000; opacity: 0.4; }
 
-        /* Smooth Utilities */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-    </style>
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 60px; display: flex; align-items: center; justify-content: space-between; gap: 20px; transition: background 0.4s, padding 0.4s; }
+  nav.scrolled { background: rgba(26,20,16,0.93); backdrop-filter: blur(12px); padding: 14px 60px; border-bottom: 1px solid rgba(201,168,76,0.15); }
+  .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 600; letter-spacing: 0.04em; color: var(--gold); text-decoration: none; white-space: nowrap; }
+  .nav-logo span { font-style: italic; font-weight: 300; color: var(--cream); }
+  .nav-logo .logo-ar { display: none; font-family: 'Amiri', serif; font-size: 24px; letter-spacing: 0; }
+  html[lang="ar"] .logo-en { display: none; }
+  html[lang="ar"] .logo-ar { display: inline !important; }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cream); text-decoration: none; opacity: 0.75; transition: opacity 0.3s, color 0.3s; position: relative; }
+  .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.3s ease; }
+  .nav-links a:hover { opacity: 1; color: var(--gold-light); }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-right { display: flex; align-items: center; gap: 16px; }
+  .nav-cta { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dark); background: var(--gold); padding: 11px 22px; text-decoration: none; transition: background 0.3s, transform 0.3s; font-weight: 500; white-space: nowrap; }
+  .nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  /* LOCATION BAR */
+  .location-bar { background: #0E0A07; padding: 13px 60px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(201,168,76,0.1); font-size: 11px; letter-spacing: 0.1em; color: rgba(248,243,234,0.4); }
+  .location-bar a { color: var(--gold); text-decoration: none; }
+  html[lang="ar"] .location-bar { font-family: 'Tajawal', sans-serif; letter-spacing: 0; font-size: 12px; }
+
+  /* HERO */
+  #hero { position: relative; height: 100vh; min-height: 700px; display: flex; align-items: center; justify-content: center; overflow: hidden; text-align: center; }
+  .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 80%, rgba(201,168,76,0.08) 0%, transparent 70%), radial-gradient(ellipse 40% 40% at 20% 20%, rgba(201,168,76,0.04) 0%, transparent 60%), linear-gradient(180deg,#0E0A07 0%,#1A1410 40%,#221A0F 100%); z-index: 0; }
+  .hero-lines { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+  .hero-lines svg { width: 100%; height: 100%; }
+  .hero-content { position: relative; z-index: 2; max-width: 900px; padding: 0 24px; }
+  .hero-eyebrow { font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; opacity: 0; animation: fadeUp 0.8s 0.3s forwards; display: flex; align-items: center; justify-content: center; gap: 16px; }
+  .hero-eyebrow::before, .hero-eyebrow::after { content: ''; display: block; width: 40px; height: 1px; background: var(--gold); opacity: 0.5; }
+  .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(60px,10vw,115px); font-weight: 300; line-height: 0.9; letter-spacing: -0.02em; margin-bottom: 32px; opacity: 0; animation: fadeUp 0.9s 0.5s forwards; }
+  .hero-title em { display: block; font-style: italic; color: var(--gold); font-weight: 300; }
+  .hero-sub { font-size: 13px; letter-spacing: 0.1em; color: var(--cream); opacity: 0; animation: fadeUp 0.9s 0.75s forwards; max-width: 500px; margin: 0 auto 48px; line-height: 1.8; }
+  .hero-buttons { display: flex; gap: 20px; justify-content: center; align-items: center; opacity: 0; animation: fadeUp 0.9s 1s forwards; }
+  .btn-primary { background: var(--gold); color: var(--dark); padding: 16px 40px; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; font-weight: 500; transition: background 0.3s, transform 0.3s, box-shadow 0.3s; }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(201,168,76,0.25); }
+  .btn-ghost { border: 1px solid rgba(201,168,76,0.4); color: var(--cream); padding: 16px 40px; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; font-weight: 400; transition: border-color 0.3s, color 0.3s, transform 0.3s; }
+  .btn-ghost:hover { border-color: var(--gold); color: var(--gold-light); transform: translateY(-2px); }
+  .scroll-hint { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 10px; font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); opacity: 0; transition: opacity 0.5s; }
+  .scroll-hint::after { content: ''; display: block; width: 1px; height: 48px; background: linear-gradient(to bottom,var(--gold),transparent); animation: scrollLine 1.5s 1.5s infinite; }
+  @keyframes scrollLine { 0%{transform:scaleY(0);transform-origin:top;opacity:1}50%{transform:scaleY(1);transform-origin:top;opacity:1}51%{transform:scaleY(1);transform-origin:bottom;opacity:1}100%{transform:scaleY(0);transform-origin:bottom;opacity:0} }
+
+  /* MARQUEE */
+  .marquee-wrap { overflow: hidden; border-top: 1px solid rgba(201,168,76,0.15); border-bottom: 1px solid rgba(201,168,76,0.15); padding: 18px 0; background: var(--mid); }
+  .marquee-inner { display: flex; animation: marquee 28s linear infinite; white-space: nowrap; }
+  .marquee-item { font-family: 'Cormorant Garamond', serif; font-size: 15px; font-style: italic; font-weight: 300; letter-spacing: 0.05em; color: var(--cream); padding: 0 60px; opacity: 0.6; flex-shrink: 0; }
+  .marquee-item .dot { color: var(--gold); margin: 0 8px; }
+  @keyframes marquee { from{transform:translateX(0)}to{transform:translateX(-50%)} }
+
+  /* ABOUT */
+  #about { padding: 140px 60px; max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; }
+  .about-visual { position: relative; }
+  .about-img-frame { position: relative; width: 100%; aspect-ratio: 3/4; overflow: hidden; }
+  .about-img-frame::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg,rgba(201,168,76,0.15) 0%,transparent 60%); z-index: 2; }
+  .about-badge { position: absolute; bottom: -30px; right: -30px; width: 120px; height: 120px; background: var(--gold); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 3; }
+  .about-badge span:first-child { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 600; color: var(--dark); line-height: 1; }
+  .about-badge span:last-child { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dark); opacity: 0.7; }
+  html[lang="ar"] .about-badge span:last-child { font-family: 'Tajawal', sans-serif; letter-spacing: 0; font-size: 10px; text-transform: none; }
+  .about-line { position: absolute; top: 30px; left: -30px; width: 1px; height: 60%; background: linear-gradient(to bottom,var(--gold),transparent); opacity: 0.5; }
+  .about-text { padding-right: 20px; }
+  .section-eyebrow { font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; display: flex; align-items: center; gap: 16px; }
+  .section-eyebrow::before { content: ''; display: block; width: 30px; height: 1px; background: var(--gold); }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px,4vw,56px); font-weight: 300; line-height: 1.1; margin-bottom: 28px; }
+  .section-title em { font-style: italic; color: var(--gold); }
+  .section-body { font-size: 14px; line-height: 1.9; color: rgba(248,243,234,0.65); margin-bottom: 40px; }
+  .stats-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 32px; margin-top: 48px; padding-top: 40px; border-top: 1px solid rgba(201,168,76,0.2); }
+  .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 44px; font-weight: 300; color: var(--gold); line-height: 1; }
+  .stat-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(248,243,234,0.45); margin-top: 6px; }
+
+  /* MENU */
+  #menu { padding: 100px 0; background: var(--mid); overflow: hidden; }
+  .menu-header { text-align: center; padding: 0 60px 80px; }
+  .menu-tabs { display: flex; justify-content: center; gap: 4px; margin-top: 40px; }
+  .menu-tab { background: none; border: 1px solid rgba(201,168,76,0.2); color: var(--cream); opacity: 0.5; padding: 10px 28px; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; font-family: 'Montserrat', sans-serif; cursor: none; transition: all 0.3s; }
+  .menu-tab:hover, .menu-tab.active { background: var(--gold); color: var(--dark); opacity: 1; border-color: var(--gold); }
+  .menu-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; padding: 0 2px; }
+  .menu-card { position: relative; background: var(--dark); padding: 48px 40px; overflow: hidden; transition: background 0.4s; }
+  .menu-card::before { content: ''; position: absolute; top: 0; left: 0; width: 0; height: 2px; background: var(--gold); transition: width 0.5s ease; }
+  .menu-card:hover { background: #1E1812; }
+  .menu-card:hover::before { width: 100%; }
+  .card-icon { font-size: 32px; margin-bottom: 20px; display: block; }
+  .card-num { position: absolute; top: 40px; right: 40px; font-family: 'Cormorant Garamond', serif; font-size: 60px; font-weight: 300; color: rgba(201,168,76,0.06); line-height: 1; transition: color 0.4s; }
+  .menu-card:hover .card-num { color: rgba(201,168,76,0.1); }
+  .card-name { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 400; margin-bottom: 12px; line-height: 1.2; }
+  .card-desc { font-size: 12px; line-height: 1.8; color: rgba(248,243,234,0.5); margin-bottom: 24px; }
+  .card-price { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--gold); font-style: italic; }
+  .card-price span { font-family: 'Montserrat', sans-serif; font-size: 11px; font-style: normal; color: rgba(248,243,234,0.35); letter-spacing: 0.1em; margin-left: 4px; }
+  html[lang="ar"] .card-price { font-style: normal; }
+  html[lang="ar"] .card-price span { font-family: 'Tajawal', sans-serif; letter-spacing: 0; margin-left: 0; margin-right: 4px; }
+
+  /* GALLERY */
+  #gallery { padding: 120px 0 0; }
+  .gallery-header { padding: 0 60px 60px; display: flex; justify-content: space-between; align-items: flex-end; }
+  .gallery-grid { display: grid; grid-template-columns: repeat(4,1fr); grid-template-rows: 300px 300px; gap: 2px; }
+  .g-item { overflow: hidden; position: relative; background: var(--mid); }
+  .g-item:first-child { grid-column: 1/3; grid-row: 1/3; }
+  .g-item:nth-child(4) { grid-column: 3/5; }
+  .g-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 12px; transition: transform 0.6s ease; background: var(--mid); }
+  .g-item:hover .g-placeholder { transform: scale(1.04); }
+  .g-placeholder .emoji { font-size: 48px; opacity: 0.4; }
+  .g-placeholder .label { font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; opacity: 0.3; }
+  .g-overlay { position: absolute; inset: 0; background: rgba(26,20,16,0.7); display: flex; align-items: flex-end; padding: 28px; opacity: 0; transition: opacity 0.4s; }
+  .g-item:hover .g-overlay { opacity: 1; }
+  .g-overlay-text { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-style: italic; }
+
+  /* TESTIMONIALS */
+  #testimonials { padding: 120px 60px; max-width: 1400px; margin: 0 auto; text-align: center; }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 32px; margin-top: 64px; }
+  .testimonial-card { background: var(--mid); padding: 48px 40px; position: relative; text-align: left; transition: transform 0.3s; }
+  .testimonial-card:hover { transform: translateY(-6px); }
+  .testimonial-card::before { content: '"'; font-family: 'Cormorant Garamond', serif; font-size: 120px; line-height: 0.8; color: var(--gold); opacity: 0.15; position: absolute; top: 24px; left: 28px; }
+  .t-stars { color: var(--gold); font-size: 13px; margin-bottom: 20px; letter-spacing: 3px; }
+  .t-text { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-style: italic; font-weight: 300; line-height: 1.7; margin-bottom: 28px; color: rgba(248,243,234,0.8); }
+  html[lang="ar"] .t-text { font-size: 19px; line-height: 1.9; }
+  .t-author { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+  .t-role { font-size: 11px; color: rgba(248,243,234,0.35); margin-top: 4px; }
+
+  /* RESERVE */
+  #reserve { background: var(--mid); padding: 120px 60px; position: relative; overflow: hidden; }
+  #reserve::before { content: ''; position: absolute; top: -200px; right: -200px; width: 600px; height: 600px; background: radial-gradient(circle,rgba(201,168,76,0.06) 0%,transparent 70%); pointer-events: none; }
+  .reserve-inner { max-width: 800px; margin: 0 auto; text-align: center; }
+  .reserve-form { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 60px; text-align: left; }
+  .form-group { display: flex; flex-direction: column; gap: 8px; }
+  .form-group.full { grid-column: 1/3; }
+  .form-label { font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); opacity: 0.8; }
+  .form-input { background: rgba(255,255,255,0.04); border: 1px solid rgba(201,168,76,0.2); color: var(--cream); padding: 14px 18px; font-size: 13px; font-family: 'Montserrat',sans-serif; font-weight: 300; outline: none; transition: border-color 0.3s,background 0.3s; cursor: none; }
+  .form-input:focus { border-color: var(--gold); background: rgba(201,168,76,0.05); }
+  .form-input option { background: var(--dark); }
+  .reserve-btn { grid-column: 1/3; background: var(--gold); color: var(--dark); border: none; padding: 18px; font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; font-family: 'Montserrat',sans-serif; font-weight: 600; cursor: none; transition: background 0.3s,transform 0.3s,box-shadow 0.3s; margin-top: 8px; }
+  .reserve-btn:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 16px 40px rgba(201,168,76,0.3); }
+
+  /* FOOTER */
+  footer { background: #0E0A07; padding: 80px 60px 40px; border-top: 1px solid rgba(201,168,76,0.1); }
+  .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; padding-bottom: 60px; border-bottom: 1px solid rgba(201,168,76,0.08); }
+  .footer-brand p { font-size: 13px; line-height: 1.8; color: rgba(248,243,234,0.4); max-width: 280px; }
+  .footer-socials { display: flex; gap: 12px; margin-top: 28px; }
+  .social-btn { width: 36px; height: 36px; border: 1px solid rgba(201,168,76,0.25); display: flex; align-items: center; justify-content: center; font-size: 14px; text-decoration: none; transition: border-color 0.3s,background 0.3s; }
+  .social-btn:hover { border-color: var(--gold); background: rgba(201,168,76,0.1); }
+  .footer-col h4 { font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; }
+  .footer-col ul { list-style: none; }
+  .footer-col li { font-size: 13px; color: rgba(248,243,234,0.45); margin-bottom: 10px; cursor: default; transition: color 0.3s; }
+  .footer-col a { font-size: 13px; color: rgba(248,243,234,0.45); text-decoration: none; display: block; margin-bottom: 10px; transition: color 0.3s; }
+  .footer-col a:hover, .footer-col li:hover { color: var(--cream); }
+  .footer-bottom { padding-top: 32px; display: flex; justify-content: space-between; align-items: center; }
+  .footer-copy { font-size: 11px; color: rgba(248,243,234,0.25); letter-spacing: 0.1em; }
+  .footer-copy a { color: var(--gold); text-decoration: none; opacity: 0.7; }
+
+  .gold-rule { width: 60px; height: 1px; background: var(--gold); margin: 0 auto 20px; opacity: 0.6; }
+
+  @keyframes fadeUp { from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)} }
+  .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+  .reveal-delay-1{transition-delay:0.1s}.reveal-delay-2{transition-delay:0.2s}.reveal-delay-3{transition-delay:0.3s}.reveal-delay-4{transition-delay:0.4s}
+
+  @media(max-width:1024px){
+    nav{padding:18px 24px}.nav-links{display:none}
+    nav.scrolled{padding:12px 24px}
+    #about{grid-template-columns:1fr;padding:80px 24px;gap:60px}
+    .menu-grid{grid-template-columns:1fr 1fr}
+    .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+    .g-item:first-child{grid-column:1/3;grid-row:auto;height:300px}
+    .g-item:nth-child(4){grid-column:auto}
+    .testimonials-grid{grid-template-columns:1fr;max-width:600px;margin:64px auto 0}
+    .footer-top{grid-template-columns:1fr 1fr;gap:36px}
+    .location-bar{display:none}
+    #about,#testimonials,#reserve{padding-left:24px;padding-right:24px}
+    .gallery-header,.menu-header{padding-left:24px;padding-right:24px}
+    footer{padding:60px 24px 32px}
+  }
+</style>
 </head>
-<body class="bg-beige text-dark antialiased overflow-x-hidden selection:bg-gold selection:text-white">
+<body>
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 transition-all duration-500 py-4" id="navbar">
-        <div class="container mx-auto px-6 lg:px-12">
-            <div class="glass-card rounded-full px-6 py-3 flex justify-between items-center shadow-glass">
-                <!-- Logo -->
-                <a href="#" class="text-2xl font-bold text-emerald flex items-center gap-2">
-                    <i class="fa-solid fa-leaf text-gold"></i>
-                    <span class="en">Oasis & Oak</span>
-                    <span class="ar">أواسيس وأوك</span>
-                </a>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
 
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center space-x-8 rtl:space-x-reverse">
-                    <a href="#about" class="text-emerald hover:text-gold transition-colors duration-300 font-medium">
-                        <span class="en">About</span><span class="ar">من نحن</span>
-                    </a>
-                    <a href="#menu" class="text-emerald hover:text-gold transition-colors duration-300 font-medium">
-                        <span class="en">Menu</span><span class="ar">القائمة</span>
-                    </a>
-                    <a href="#booking" class="text-emerald hover:text-gold transition-colors duration-300 font-medium">
-                        <span class="en">Booking</span><span class="ar">الحجز</span>
-                    </a>
-                    <a href="#location" class="text-emerald hover:text-gold transition-colors duration-300 font-medium">
-                        <span class="en">Location</span><span class="ar">الموقع</span>
-                    </a>
-                </div>
+<div class="location-bar">
+  <span id="locLeft">📍 Dubai Marina, United Arab Emirates</span>
+  <span id="locMid">Sun–Thu: 7am–11pm &nbsp;|&nbsp; Fri–Sat: 7am–12am</span>
+  <span>📞 <a href="tel:+97144000000">+971 4 400 0000</a></span>
+</div>
 
-                <!-- Language Toggle & Mobile Menu Btn -->
-                <div class="flex items-center gap-4">
-                    <button onclick="toggleLanguage()" class="text-sm font-bold text-emerald border border-emerald/20 px-3 py-1 rounded-full hover:bg-emerald hover:text-white transition-all duration-300">
-                        <span class="en">عربي</span>
-                        <span class="ar">EN</span>
-                    </button>
-                    <button class="md:hidden text-emerald text-2xl focus:outline-none">
-                        <i class="fa-solid fa-bars"></i>
-                    </button>
-                </div>
-            </div>
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <span class="logo-en">Zafaran<span> Café</span></span>
+    <span class="logo-ar">مقهى <span>زعفران</span></span>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about" data-en="Our Story" data-ar="قصتنا">Our Story</a></li>
+    <li><a href="#menu" data-en="Menu" data-ar="القائمة">Menu</a></li>
+    <li><a href="#gallery" data-en="Gallery" data-ar="المعرض">Gallery</a></li>
+    <li><a href="#testimonials" data-en="Reviews" data-ar="آراء الضيوف">Reviews</a></li>
+    <li><a href="#reserve" data-en="Contact" data-ar="تواصل">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-toggle">
+      <button class="lang-btn active" data-lang="en">EN</button>
+      <div class="lang-divider"></div>
+      <button class="lang-btn" data-lang="ar">عربي</button>
+    </div>
+    <a href="#reserve" class="nav-cta" id="navCta">Reserve a Table</a>
+  </div>
+</nav>
+
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-lines">
+    <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+      <line x1="720" y1="0" x2="720" y2="900" stroke="rgba(201,168,76,0.04)" stroke-width="1"/>
+      <line x1="0" y1="450" x2="1440" y2="450" stroke="rgba(201,168,76,0.04)" stroke-width="1"/>
+      <circle cx="720" cy="450" r="300" fill="none" stroke="rgba(201,168,76,0.05)" stroke-width="1"/>
+      <circle cx="720" cy="450" r="200" fill="none" stroke="rgba(201,168,76,0.04)" stroke-width="1"/>
+      <circle cx="720" cy="450" r="440" fill="none" stroke="rgba(201,168,76,0.03)" stroke-width="1"/>
+      <polygon points="720,140 1000,560 440,560" fill="none" stroke="rgba(201,168,76,0.04)" stroke-width="1"/>
+    </svg>
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow" id="heroEyebrow">Est. 2018 · Dubai Marina</div>
+    <h1 class="hero-title" id="heroTitle">Where <em>Flavour</em> Meets<br>Heritage</h1>
+    <p class="hero-sub" id="heroSub">Handcrafted specialty coffee, Emirati-inspired cuisine,<br>and the warmth of authentic Arabian hospitality.</p>
+    <div class="hero-buttons">
+      <a href="#menu" class="btn-primary" id="heroCta1">Explore Menu</a>
+      <a href="#reserve" class="btn-ghost" id="heroCta2">Make Reservation</a>
+    </div>
+  </div>
+  <div class="scroll-hint" id="scrollHint">Scroll</div>
+</section>
+
+<div class="marquee-wrap">
+  <div class="marquee-inner" id="marqueeInner">
+    <span class="marquee-item">Specialty Coffee<span class="dot">✦</span></span>
+    <span class="marquee-item">Saffron Latte<span class="dot">✦</span></span>
+    <span class="marquee-item">Arabic Mezzeh<span class="dot">✦</span></span>
+    <span class="marquee-item">Cardamom Croissant<span class="dot">✦</span></span>
+    <span class="marquee-item">Emirati Fusion<span class="dot">✦</span></span>
+    <span class="marquee-item">Outdoor Terrace<span class="dot">✦</span></span>
+    <span class="marquee-item">Shisha Lounge<span class="dot">✦</span></span>
+    <span class="marquee-item">Private Events<span class="dot">✦</span></span>
+    <span class="marquee-item">Specialty Coffee<span class="dot">✦</span></span>
+    <span class="marquee-item">Saffron Latte<span class="dot">✦</span></span>
+    <span class="marquee-item">Arabic Mezzeh<span class="dot">✦</span></span>
+    <span class="marquee-item">Cardamom Croissant<span class="dot">✦</span></span>
+    <span class="marquee-item">Emirati Fusion<span class="dot">✦</span></span>
+    <span class="marquee-item">Outdoor Terrace<span class="dot">✦</span></span>
+    <span class="marquee-item">Shisha Lounge<span class="dot">✦</span></span>
+    <span class="marquee-item">Private Events<span class="dot">✦</span></span>
+  </div>
+</div>
+
+<section id="about">
+  <div class="about-visual reveal">
+    <div class="about-line"></div>
+    <div class="about-img-frame">
+      <div style="width:100%;height:100%;background:linear-gradient(135deg,#2E2318 0%,#1A1410 50%,#221A0F 100%);display:flex;align-items:center;justify-content:center;">
+        <div style="text-align:center;opacity:0.35;">
+          <div style="font-size:64px;margin-bottom:16px;">☕</div>
+          <div id="aboutImgLabel" style="font-size:11px;letter-spacing:0.3em;text-transform:uppercase;font-family:Montserrat,sans-serif;">Café Interior</div>
         </div>
-    </nav>
+      </div>
+    </div>
+    <div class="about-badge"><span>6</span><span id="aboutBadge">Years</span></div>
+  </div>
+  <div class="about-text">
+    <div class="section-eyebrow reveal" id="aboutEyebrow">Our Story</div>
+    <h2 class="section-title reveal reveal-delay-1" id="aboutTitle">Born from<br>the <em>Soul</em> of Arabia</h2>
+    <p class="section-body reveal reveal-delay-2" id="aboutBody1">Zafaran Café was founded with a single vision: to honour the rich coffee traditions of the Arab world while embracing the cosmopolitan spirit of Dubai. Every cup we serve is a dialogue between ancient ritual and modern craft.</p>
+    <p class="section-body reveal reveal-delay-3" id="aboutBody2">Our master roaster sources single-origin beans from Yemen, Ethiopia, and Colombia, blending them with hand-picked saffron, cardamom, and rose from the souks of Deira. The result is a flavour that is unmistakably, beautifully ours.</p>
+    <a href="#menu" class="btn-primary reveal reveal-delay-4" id="aboutCta">Discover Our Flavours</a>
+    <div class="stats-row">
+      <div class="reveal reveal-delay-1"><div class="stat-num">6+</div><div class="stat-label" id="stat1">Years Serving</div></div>
+      <div class="reveal reveal-delay-2"><div class="stat-num">40k</div><div class="stat-label" id="stat2">Happy Guests</div></div>
+      <div class="reveal reveal-delay-3"><div class="stat-num">28</div><div class="stat-label" id="stat3">Signature Drinks</div></div>
+    </div>
+  </div>
+</section>
 
-    <!-- Hero Section -->
-    <section class="relative h-screen flex items-center justify-center overflow-hidden">
-        <!-- Background Image -->
-        <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1920&q=80" alt="Cafe Interior" class="w-full h-full object-cover" />
-            <div class="absolute inset-0 bg-emerald/60 mix-blend-multiply"></div>
-            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-beige/90"></div>
-        </div>
+<section id="menu">
+  <div class="menu-header">
+    <div class="section-eyebrow reveal" style="justify-content:center" id="menuEyebrow">Crafted with Love</div>
+    <h2 class="section-title reveal reveal-delay-1" id="menuTitle">Our Signature <em>Menu</em></h2>
+    <p class="section-body reveal reveal-delay-2" style="max-width:520px;margin:0 auto" id="menuSub">Each dish and drink is an homage to the flavours of the Emirates, reimagined for the modern palate.</p>
+    <div class="menu-tabs reveal reveal-delay-3">
+      <button class="menu-tab active" data-en="All Items" data-ar="جميع الأصناف">All Items</button>
+      <button class="menu-tab" data-en="Coffee" data-ar="القهوة">Coffee</button>
+      <button class="menu-tab" data-en="Food" data-ar="الطعام">Food</button>
+      <button class="menu-tab" data-en="Desserts" data-ar="الحلويات">Desserts</button>
+    </div>
+  </div>
+  <div class="menu-grid">
+    <div class="menu-card reveal"><span class="card-icon">☕</span><span class="card-num">٠١</span>
+      <div class="card-name" data-en="Zafaran Saffron Latte" data-ar="لاتيه الزعفران">Zafaran Saffron Latte</div>
+      <div class="card-desc" data-en="Hand-pulled espresso with steamed milk, pure saffron threads, and a whisper of cardamom. Our signature drink." data-ar="إسبريسو محضّر يدوياً مع حليب مبخّر وخيوط زعفران أصيل ولمسة من الهيل. مشروبنا المميز.">Hand-pulled espresso with steamed milk, pure saffron threads, and a whisper of cardamom. Our signature drink.</div>
+      <div class="card-price">AED 32 <span data-en="/ cup" data-ar="/ كوب">/ cup</span></div>
+    </div>
+    <div class="menu-card reveal reveal-delay-1"><span class="card-icon">🌹</span><span class="card-num">٠٢</span>
+      <div class="card-name" data-en="Rose Gold Cappuccino" data-ar="كابتشينو الورد الذهبي">Rose Gold Cappuccino</div>
+      <div class="card-desc" data-en="Single-origin Yemeni beans, velvety micro-foam, edible gold dust and rose water mist on top." data-ar="حبوب يمنية أحادية المصدر، رغوة حليب مخملية، ذهب صالح للأكل ورذاذ ماء الورد.">Single-origin Yemeni beans, velvety micro-foam, edible gold dust and rose water mist on top.</div>
+      <div class="card-price">AED 28 <span data-en="/ cup" data-ar="/ كوب">/ cup</span></div>
+    </div>
+    <div class="menu-card reveal reveal-delay-2"><span class="card-icon">🍃</span><span class="card-num">٠٣</span>
+      <div class="card-name" data-en="Mint Lemonade Royale" data-ar="ليموناضة النعناع الملكية">Mint Lemonade Royale</div>
+      <div class="card-desc" data-en="Fresh-pressed lemons, garden mint, sparkling water and a touch of orange blossom honey." data-ar="ليمون طازج معصور وورق نعناع ومياه غازية مع لمسة عسل زهر البرتقال.">Fresh-pressed lemons, garden mint, sparkling water and a touch of orange blossom honey.</div>
+      <div class="card-price">AED 22 <span data-en="/ glass" data-ar="/ كأس">/ glass</span></div>
+    </div>
+    <div class="menu-card reveal reveal-delay-1"><span class="card-icon">🥐</span><span class="card-num">٠٤</span>
+      <div class="card-name" data-en="Cardamom Croissant" data-ar="كرواسان الهيل">Cardamom Croissant</div>
+      <div class="card-desc" data-en="Flaky, buttery pastry infused with ground green cardamom, glazed with local honey and crushed pistachios." data-ar="معجنات هشة زبدية مع هيل أخضر مطحون، مغلّفة بالعسل المحلي والفستق المجروش.">Flaky, buttery pastry infused with ground green cardamom, glazed with local honey and crushed pistachios.</div>
+      <div class="card-price">AED 18 <span data-en="/ piece" data-ar="/ قطعة">/ piece</span></div>
+    </div>
+    <div class="menu-card reveal reveal-delay-2"><span class="card-icon">🍽️</span><span class="card-num">٠٥</span>
+      <div class="card-name" data-en="Emirati Breakfast Platter" data-ar="طبق الإفطار الإماراتي">Emirati Breakfast Platter</div>
+      <div class="card-desc" data-en="Chami cheese, local honey, Balaleet sweet vermicelli, date jam and fresh-baked regag bread." data-ar="جبنة الشامي وعسل محلي وبلاليط والمربى التمري وخبز الرقاق الطازج.">Chami cheese, local honey, Balaleet sweet vermicelli, date jam and fresh-baked regag bread.</div>
+      <div class="card-price">AED 65 <span data-en="/ platter" data-ar="/ طبق">/ platter</span></div>
+    </div>
+    <div class="menu-card reveal reveal-delay-3"><span class="card-icon">🍮</span><span class="card-num">٠٦</span>
+      <div class="card-name" data-en="Luqaimat Basket" data-ar="سلة اللقيمات">Luqaimat Basket</div>
+      <div class="card-desc" data-en="Golden fried dough balls drizzled with date syrup and scattered with sesame — a beloved UAE street classic." data-ar="كرات العجين الذهبية المقلية مع دبس التمر وبذور السمسم — كلاسيكية إماراتية محبوبة.">Golden fried dough balls drizzled with date syrup and scattered with sesame — a beloved UAE street classic.</div>
+      <div class="card-price">AED 35 <span data-en="/ basket" data-ar="/ سلة">/ basket</span></div>
+    </div>
+  </div>
+</section>
 
-        <!-- Hero Content -->
-        <div class="relative z-10 text-center px-6 max-w-4xl mx-auto mt-20" data-aos="fade-up" data-aos-duration="1000">
-            <span class="block text-gold font-semibold tracking-widest uppercase mb-4 text-sm md:text-base">
-                <span class="en">Jumeirah, Dubai</span>
-                <span class="ar">جميرا، دبي</span>
-            </span>
-            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-lg">
-                <span class="en">Where Desert <br> Meets the Cup</span>
-                <span class="ar">حيث تلتقي الصحراء <br> بفنجان القهوة</span>
-            </h1>
-            <p class="text-lg md:text-xl text-white/90 mb-10 max-w-2xl mx-auto font-light">
-                <span class="en">Experience a harmonious blend of Khaleeji hospitality and modern specialty coffee in a sanctuary of elegance.</span>
-                <span class="ar">استمتع بمزيج متناغم من الضيافة الخليجية والقهوة المختصة الحديثة في ملاذ من الأناقة.</span>
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#menu" class="bg-gold text-white px-8 py-4 rounded-full font-medium hover:bg-white hover:text-emerald hover:scale-105 transition-all duration-300 shadow-lg">
-                    <span class="en">Explore Menu</span>
-                    <span class="ar">استكشف القائمة</span>
-                </a>
-                <a href="#booking" class="bg-white/20 backdrop-blur-md border border-white/30 text-white px-8 py-4 rounded-full font-medium hover:bg-white hover:text-emerald hover:scale-105 transition-all duration-300 shadow-lg">
-                    <span class="en">Reserve a Table</span>
-                    <span class="ar">احجز طاولة</span>
-                </a>
-            </div>
-        </div>
-    </section>
+<section id="gallery">
+  <div class="gallery-header">
+    <div>
+      <div class="section-eyebrow reveal" id="galleryEyebrow">Visual Journey</div>
+      <h2 class="section-title reveal reveal-delay-1" id="galleryTitle">A Feast for<br>the <em>Eyes</em></h2>
+    </div>
+    <a href="#" class="btn-ghost reveal" id="galleryCta">View Full Gallery</a>
+  </div>
+  <div class="gallery-grid">
+    <div class="g-item"><div class="g-placeholder" style="background:linear-gradient(135deg,#2E2318,#1A1410)"><span class="emoji">🏺</span><span class="label" data-en="Interior Ambiance" data-ar="أجواء الداخل">Interior Ambiance</span></div><div class="g-overlay"><div class="g-overlay-text" data-en="The Heart of Zafaran" data-ar="قلب مقهى زعفران">The Heart of Zafaran</div></div></div>
+    <div class="g-item"><div class="g-placeholder" style="background:linear-gradient(135deg,#221A0F,#2E2318)"><span class="emoji">☕</span><span class="label" data-en="Signature Coffee" data-ar="قهوتنا المميزة">Signature Coffee</span></div><div class="g-overlay"><div class="g-overlay-text" data-en="Saffron Latte Art" data-ar="لاتيه الزعفران">Saffron Latte Art</div></div></div>
+    <div class="g-item"><div class="g-placeholder" style="background:linear-gradient(135deg,#1E1610,#2A1F14)"><span class="emoji">🌙</span><span class="label" data-en="Evening Terrace" data-ar="الشرفة المسائية">Evening Terrace</span></div><div class="g-overlay"><div class="g-overlay-text" data-en="Dubai Marina Nights" data-ar="ليالي دبي مارينا">Dubai Marina Nights</div></div></div>
+    <div class="g-item"><div class="g-placeholder" style="background:linear-gradient(135deg,#2A1F14,#221A0F)"><span class="emoji">🍽️</span><span class="label" data-en="Food Artistry" data-ar="فن الطعام">Food Artistry</span></div><div class="g-overlay"><div class="g-overlay-text" data-en="Heritage Breakfast" data-ar="إفطار التراث">Heritage Breakfast</div></div></div>
+    <div class="g-item"><div class="g-placeholder" style="background:linear-gradient(135deg,#1A1410,#2E2318)"><span class="emoji">🌹</span><span class="label" data-en="Floral Details" data-ar="التفاصيل الزهرية">Floral Details</span></div><div class="g-overlay"><div class="g-overlay-text" data-en="Rose & Cardamom" data-ar="الورد والهيل">Rose & Cardamom</div></div></div>
+  </div>
+</section>
 
-    <!-- About Us Section -->
-    <section id="about" class="py-24 bg-beige relative">
-        <div class="container mx-auto px-6 lg:px-12">
-            <div class="flex flex-col lg:flex-row items-center gap-16">
-                <!-- Image -->
-                <div class="w-full lg:w-1/2 relative" data-aos="fade-right" data-aos-duration="1000">
-                    <div class="absolute inset-0 bg-gold rounded-3xl transform translate-x-4 translate-y-4 opacity-50"></div>
-                    <img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?auto=format&fit=crop&w=800&q=80" alt="Pouring Coffee" class="relative z-10 rounded-3xl shadow-2xl w-full object-cover h-[500px]" />
-                </div>
-                <!-- Text -->
-                <div class="w-full lg:w-1/2" data-aos="fade-left" data-aos-duration="1000">
-                    <h2 class="text-4xl md:text-5xl font-bold text-emerald mb-6">
-                        <span class="en">Rooted in Tradition,<br>Brewed for Today.</span>
-                        <span class="ar">جذور في التقاليد،<br>نُحضّرها لليوم.</span>
-                    </h2>
-                    <div class="w-20 h-1 bg-gold mb-8"></div>
-                    <p class="text-lg text-emerald/80 mb-6 leading-relaxed">
-                        <span class="en">At Oasis & Oak, we celebrate the rich heritage of Khaleeji hospitality. Nestled in the heart of Jumeirah, our boutique cafe is a cultural fusion where the warmth of the desert meets the sophistication of modern brewing techniques.</span>
-                        <span class="ar">في أواسيس وأوك، نحتفل بالتراث الغني للضيافة الخليجية. يقع مقهانا في قلب جميرا، وهو مزيج ثقافي حيث يلتقي دفء الصحراء بتطور تقنيات التحضير الحديثة.</span>
-                    </p>
-                    <p class="text-lg text-emerald/80 mb-8 leading-relaxed">
-                        <span class="en">Every cup tells a story of ethically sourced beans, artisanal craftsmanship, and a welcoming space designed for connection.</span>
-                        <span class="ar">كل كوب يروي قصة حبوب البن المستوردة بأخلاقية، والحرفية اليدوية، ومساحة ترحيبية مصممة للتواصل.</span>
-                    </p>
-                    <div class="flex items-center gap-4 text-emerald font-semibold">
-                        <div class="w-12 h-12 rounded-full bg-sand flex items-center justify-center text-xl">
-                            <i class="fa-solid fa-mug-hot"></i>
-                        </div>
-                        <span class="en">Premium Specialty Coffee</span>
-                        <span class="ar">قهوة مختصة فاخرة</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<section id="testimonials">
+  <div class="gold-rule"></div>
+  <div class="section-eyebrow reveal" style="justify-content:center" id="testEyebrow">What Our Guests Say</div>
+  <h2 class="section-title reveal reveal-delay-1" id="testTitle">Words of <em>Warmth</em></h2>
+  <div class="testimonials-grid">
+    <div class="testimonial-card reveal">
+      <div class="t-stars">★★★★★</div>
+      <p class="t-text" data-en="The saffron latte is absolutely divine. It tastes like someone bottled up the soul of Dubai and poured it into a cup. I come here every morning without exception." data-ar="لاتيه الزعفران رائع بكل معنى الكلمة. يبدو كأن روح دبي قد حُبست في كوب. أزور المكان كل صباح دون استثناء.">The saffron latte is absolutely divine. It tastes like someone bottled up the soul of Dubai and poured it into a cup. I come here every morning without exception.</p>
+      <div class="t-author" data-en="Layla Al Mansouri" data-ar="ليلى المنصوري">Layla Al Mansouri</div>
+      <div class="t-role" data-en="Dubai Resident · Regular Guest" data-ar="مقيمة في دبي · زبونة دائمة">Dubai Resident · Regular Guest</div>
+    </div>
+    <div class="testimonial-card reveal reveal-delay-1">
+      <div class="t-stars">★★★★★</div>
+      <p class="t-text" data-en="Stunning interior, impeccable service, and the Emirati breakfast platter rivals anything I have eaten in five-star hotels. Zafaran is a hidden gem of the Marina." data-ar="ديكور رائع وخدمة لا تشوبها شائبة. طبق الإفطار الإماراتي لا يُضاهى. مقهى زعفران جوهرة خفية في المارينا.">Stunning interior, impeccable service, and the Emirati breakfast platter rivals anything I have eaten in five-star hotels. Zafaran is a hidden gem of the Marina.</p>
+      <div class="t-author" data-en="James Whitmore" data-ar="جيمس ويتمور">James Whitmore</div>
+      <div class="t-role" data-en="Travel Writer · London" data-ar="كاتب سفر · لندن">Travel Writer · London</div>
+    </div>
+    <div class="testimonial-card reveal reveal-delay-2">
+      <div class="t-stars">★★★★★</div>
+      <p class="t-text" data-en="We hosted our company's welcome event here and it was perfect. The team went above and beyond. Our international guests were completely enchanted." data-ar="استضفنا حفل استقبال شركتنا هنا وكان مثالياً. الفريق بذل جهداً استثنائياً. ضيوفنا الدوليون أُبهروا تماماً.">We hosted our company's welcome event here and it was perfect. The team went above and beyond. Our international guests were completely enchanted.</p>
+      <div class="t-author" data-en="Meera Sharma" data-ar="ميرا شارما">Meera Sharma</div>
+      <div class="t-role" data-en="Event Manager · DIFC" data-ar="مديرة فعاليات · مركز دبي المالي">Event Manager · DIFC</div>
+    </div>
+  </div>
+</section>
 
-    <!-- Menu Section -->
-    <section id="menu" class="py-24 bg-white">
-        <div class="container mx-auto px-6 lg:px-12">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <span class="text-gold font-semibold tracking-widest uppercase text-sm">
-                    <span class="en">Our Masterpieces</span>
-                    <span class="ar">روائعنا</span>
-                </span>
-                <h2 class="text-4xl md:text-5xl font-bold text-emerald mt-2">
-                    <span class="en">Signature Creations</span>
-                    <span class="ar">إبداعاتنا المميزة</span>
-                </h2>
-            </div>
+<section id="reserve">
+  <div class="reserve-inner">
+    <div class="gold-rule"></div>
+    <div class="section-eyebrow reveal" style="justify-content:center" id="resEyebrow">Reserve Your Table</div>
+    <h2 class="section-title reveal reveal-delay-1" id="resTitle">Join Us for an<br><em>Unforgettable</em> Evening</h2>
+    <p class="section-body reveal reveal-delay-2" id="resBody">Whether it is a quiet morning coffee or a celebratory dinner, we are here to make every visit special. Book your table and let us take care of everything else.</p>
+    <form class="reserve-form" onsubmit="handleSubmit(event)">
+      <div class="form-group reveal"><label class="form-label" id="fl1">Your Name</label><input type="text" class="form-input" id="nameInput" placeholder="Ahmed Al Rashidi"></div>
+      <div class="form-group reveal reveal-delay-1"><label class="form-label" id="fl2">Phone Number</label><input type="tel" class="form-input" placeholder="+971 50 000 0000"></div>
+      <div class="form-group reveal reveal-delay-2"><label class="form-label" id="fl3">Date</label><input type="date" class="form-input"></div>
+      <div class="form-group reveal reveal-delay-3"><label class="form-label" id="fl4">Time</label>
+        <select class="form-input"><option>07:00 AM</option><option>08:00 AM</option><option>09:00 AM</option><option>12:00 PM</option><option>01:00 PM</option><option>06:00 PM</option><option>07:00 PM</option><option>08:00 PM</option></select>
+      </div>
+      <div class="form-group reveal"><label class="form-label" id="fl5">Number of Guests</label>
+        <select class="form-input" id="guestSel">
+          <option data-en="1 Guest" data-ar="ضيف واحد">1 Guest</option>
+          <option data-en="2 Guests" data-ar="ضيفان">2 Guests</option>
+          <option data-en="3–4 Guests" data-ar="٣–٤ ضيوف">3–4 Guests</option>
+          <option data-en="5–6 Guests" data-ar="٥–٦ ضيوف">5–6 Guests</option>
+          <option data-en="7+ Guests (Private Event)" data-ar="٧+ ضيوف (فعالية خاصة)">7+ Guests (Private Event)</option>
+        </select>
+      </div>
+      <div class="form-group reveal reveal-delay-1"><label class="form-label" id="fl6">Occasion</label>
+        <select class="form-input" id="occSel">
+          <option data-en="Regular Visit" data-ar="زيارة عادية">Regular Visit</option>
+          <option data-en="Birthday" data-ar="عيد ميلاد">Birthday</option>
+          <option data-en="Anniversary" data-ar="ذكرى سنوية">Anniversary</option>
+          <option data-en="Business Meeting" data-ar="اجتماع عمل">Business Meeting</option>
+          <option data-en="Private Event" data-ar="فعالية خاصة">Private Event</option>
+        </select>
+      </div>
+      <div class="form-group full reveal reveal-delay-2"><label class="form-label" id="fl7">Special Requests</label>
+        <textarea class="form-input" rows="3" id="specialReq" placeholder="Dietary requirements, seating preferences, or any special arrangements…" style="resize:vertical"></textarea>
+      </div>
+      <button type="submit" class="reserve-btn reveal reveal-delay-3" id="resCta">Confirm Reservation</button>
+    </form>
+  </div>
+</section>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                <!-- Item 1 -->
-                <div class="bg-beige rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-500 group" data-aos="fade-up" data-aos-delay="100">
-                    <div class="h-64 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=600&q=80" alt="Spanish Latte" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                    </div>
-                    <div class="p-8 relative">
-                        <div class="absolute top-0 right-6 transform -translate-y-1/2 bg-gold text-white px-4 py-1 rounded-full font-bold shadow-md rtl:left-6 rtl:right-auto">
-                            <span class="en">35 AED</span><span class="ar">٣٥ درهم</span>
-                        </div>
-                        <h3 class="text-2xl font-bold text-emerald mb-3">
-                            <span class="en">Oasis Spanish Latte</span>
-                            <span class="ar">سبانيش لاتيه الواحة</span>
-                        </h3>
-                        <p class="text-emerald/70">
-                            <span class="en">A velvety blend of our house espresso, sweetened condensed milk, and a hint of desert vanilla. Served over ice or perfectly steamed.</span>
-                            <span class="ar">مزيج مخملي من الإسبريسو الخاص بنا، حليب مكثف محلى، ولمسة من فانيليا الصحراء. يقدم مثلجاً أو مبخراً بامتياز.</span>
-                        </p>
-                    </div>
-                </div>
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo" style="display:block;margin-bottom:20px">
+        <span class="logo-en">Zafaran<span> Café</span></span>
+        <span class="logo-ar">مقهى <span>زعفران</span></span>
+      </a>
+      <p id="footerBrand">Where the traditions of Arabian hospitality meet the craft of modern coffee culture. A sanctuary of flavour in the heart of Dubai Marina.</p>
+      <div class="footer-socials">
+        <a href="#" class="social-btn">𝕏</a><a href="#" class="social-btn">in</a>
+        <a href="#" class="social-btn">📷</a><a href="#" class="social-btn">▶</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4 id="fNavTitle">Navigate</h4>
+      <a href="#about" data-en="Our Story" data-ar="قصتنا">Our Story</a>
+      <a href="#menu" data-en="Menu" data-ar="القائمة">Menu</a>
+      <a href="#gallery" data-en="Gallery" data-ar="المعرض">Gallery</a>
+      <a href="#testimonials" data-en="Reviews" data-ar="آراء الضيوف">Reviews</a>
+      <a href="#reserve" data-en="Reservations" data-ar="الحجوزات">Reservations</a>
+    </div>
+    <div class="footer-col">
+      <h4 id="fHoursTitle">Hours</h4>
+      <li id="fh1">Sunday – Thursday</li>
+      <li style="color:var(--gold);opacity:0.8">7:00 AM – 11:00 PM</li>
+      <li style="margin-top:12px" id="fh2">Friday – Saturday</li>
+      <li style="color:var(--gold);opacity:0.8">7:00 AM – 12:00 AM</li>
+    </div>
+    <div class="footer-col">
+      <h4 id="fLocTitle">Location</h4>
+      <li id="fAddr1">Marina Walk, Unit 4B</li>
+      <li id="fAddr2">Dubai Marina</li>
+      <li>Dubai, UAE</li>
+      <li style="margin-top:12px;color:var(--gold);opacity:0.8">+971 4 400 0000</li>
+      <li style="color:var(--gold);opacity:0.8">hello@zafarancafe.ae</li>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy" id="footerCopy">© 2024 Zafaran Café. All rights reserved. · <a href="#">Privacy Policy</a></div>
+    <div class="footer-copy" id="footerCredit">Designed with ♥ for the UAE</div>
+  </div>
+</footer>
 
-                <!-- Item 2 -->
-                <div class="bg-beige rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-500 group" data-aos="fade-up" data-aos-delay="200">
-                    <div class="h-64 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1464195244916-405fa0a82545?auto=format&fit=crop&w=600&q=80" alt="Saffron Tres Leches" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                    </div>
-                    <div class="p-8 relative">
-                        <div class="absolute top-0 right-6 transform -translate-y-1/2 bg-gold text-white px-4 py-1 rounded-full font-bold shadow-md rtl:left-6 rtl:right-auto">
-                            <span class="en">45 AED</span><span class="ar">٤٥ درهم</span>
-                        </div>
-                        <h3 class="text-2xl font-bold text-emerald mb-3">
-                            <span class="en">Saffron Tres Leches</span>
-                            <span class="ar">تريس ليتشيز بالزعفران</span>
-                        </h3>
-                        <p class="text-emerald/70">
-                            <span class="en">A decadent sponge cake soaked in three types of milk, infused with premium Iranian saffron and topped with whipped cream.</span>
-                            <span class="ar">كعكة إسفنجية غنية منقوعة في ثلاثة أنواع من الحليب، ممزوجة بالزعفران الإيراني الفاخر ومغطاة بالكريمة المخفوقة.</span>
-                        </p>
-                    </div>
-                </div>
+<div id="toast" style="position:fixed;bottom:40px;right:40px;z-index:9999;background:var(--gold);color:var(--dark);padding:18px 32px;font-size:12px;letter-spacing:0.15em;text-transform:uppercase;font-weight:600;transform:translateY(80px);opacity:0;transition:transform 0.4s ease,opacity 0.4s ease;box-shadow:0 16px 40px rgba(201,168,76,0.3)"><span id="toastMsg">✓ &nbsp; Reservation Request Sent!</span></div>
 
-                <!-- Item 3 -->
-                <div class="bg-beige rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-500 group" data-aos="fade-up" data-aos-delay="300">
-                    <div class="h-64 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1557006021-b85faa2bc5e2?auto=format&fit=crop&w=600&q=80" alt="Karak Latte" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                    </div>
-                    <div class="p-8 relative">
-                        <div class="absolute top-0 right-6 transform -translate-y-1/2 bg-gold text-white px-4 py-1 rounded-full font-bold shadow-md rtl:left-6 rtl:right-auto">
-                            <span class="en">30 AED</span><span class="ar">٣٠ درهم</span>
-                        </div>
-                        <h3 class="text-2xl font-bold text-emerald mb-3">
-                            <span class="en">Signature Karak Latte</span>
-                            <span class="ar">كرك لاتيه المميز</span>
-                        </h3>
-                        <p class="text-emerald/70">
-                            <span class="en">A modern twist on a local favorite. Rich black tea, cardamom, and spices combined with a shot of espresso and micro-foamed milk.</span>
-                            <span class="ar">لمسة عصرية على المشروب المحلي المفضل. شاي أسود غني، هيل، وتوابل ممزوجة مع جرعة إسبريسو وحليب مبخر.</span>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center mt-12">
-                <a href="#" class="inline-block border-2 border-emerald text-emerald px-8 py-3 rounded-full font-medium hover:bg-emerald hover:text-white transition-colors duration-300">
-                    <span class="en">View Full Menu</span>
-                    <span class="ar">عرض القائمة الكاملة</span>
-                </a>
-            </div>
-        </div>
-    </section>
+<script>
+const marqueeEN = ["Specialty Coffee","Saffron Latte","Arabic Mezzeh","Cardamom Croissant","Emirati Fusion","Outdoor Terrace","Shisha Lounge","Private Events"];
+const marqueeAR = ["قهوة متخصصة","لاتيه الزعفران","مزة عربية","كرواسان الهيل","مزيج إماراتي","تراس خارجي","صالة الشيشة","فعاليات خاصة"];
 
-    <!-- Booking Section -->
-    <section id="booking" class="py-24 bg-emerald relative overflow-hidden">
-        <!-- Decorative Elements -->
-        <div class="absolute top-0 left-0 w-64 h-64 bg-gold rounded-full mix-blend-overlay filter blur-3xl opacity-20 transform -translate-x-1/2 -translate-y-1/2"></div>
-        <div class="absolute bottom-0 right-0 w-96 h-96 bg-sand rounded-full mix-blend-overlay filter blur-3xl opacity-10 transform translate-x-1/3 translate-y-1/3"></div>
+const T = {
+  en: {
+    locLeft:"📍 Dubai Marina, United Arab Emirates",
+    locMid:"Sun–Thu: 7am–11pm \u00a0|\u00a0 Fri–Sat: 7am–12am",
+    heroEyebrow:"Est. 2018 · Dubai Marina",
+    heroTitle:"Where <em>Flavour</em> Meets<br>Heritage",
+    heroSub:"Handcrafted specialty coffee, Emirati-inspired cuisine,<br>and the warmth of authentic Arabian hospitality.",
+    heroCta1:"Explore Menu", heroCta2:"Make Reservation", scrollHint:"Scroll",
+    aboutImgLabel:"Café Interior", aboutBadge:"Years", aboutEyebrow:"Our Story",
+    aboutTitle:"Born from<br>the <em>Soul</em> of Arabia",
+    aboutBody1:"Zafaran Café was founded with a single vision: to honour the rich coffee traditions of the Arab world while embracing the cosmopolitan spirit of Dubai. Every cup we serve is a dialogue between ancient ritual and modern craft.",
+    aboutBody2:"Our master roaster sources single-origin beans from Yemen, Ethiopia, and Colombia, blending them with hand-picked saffron, cardamom, and rose from the souks of Deira. The result is a flavour that is unmistakably, beautifully ours.",
+    aboutCta:"Discover Our Flavours",
+    stat1:"Years Serving", stat2:"Happy Guests", stat3:"Signature Drinks",
+    menuEyebrow:"Crafted with Love", menuTitle:"Our Signature <em>Menu</em>",
+    menuSub:"Each dish and drink is an homage to the flavours of the Emirates, reimagined for the modern palate.",
+    galleryEyebrow:"Visual Journey", galleryTitle:"A Feast for<br>the <em>Eyes</em>", galleryCta:"View Full Gallery",
+    testEyebrow:"What Our Guests Say", testTitle:"Words of <em>Warmth</em>",
+    resEyebrow:"Reserve Your Table", resTitle:"Join Us for an<br><em>Unforgettable</em> Evening",
+    resBody:"Whether it is a quiet morning coffee or a celebratory dinner, we are here to make every visit special. Book your table and let us take care of everything else.",
+    fl1:"Your Name", fl2:"Phone Number", fl3:"Date", fl4:"Time", fl5:"Number of Guests", fl6:"Occasion", fl7:"Special Requests",
+    nameInputPH:"Ahmed Al Rashidi", specialReqPH:"Dietary requirements, seating preferences, or any special arrangements…",
+    resCta:"Confirm Reservation", navCta:"Reserve a Table",
+    footerBrand:"Where the traditions of Arabian hospitality meet the craft of modern coffee culture. A sanctuary of flavour in the heart of Dubai Marina.",
+    fNavTitle:"Navigate", fHoursTitle:"Hours", fLocTitle:"Location",
+    fh1:"Sunday – Thursday", fh2:"Friday – Saturday",
+    fAddr1:"Marina Walk, Unit 4B", fAddr2:"Dubai Marina",
+    footerCopy:`© 2024 Zafaran Café. All rights reserved. · <a href="#">Privacy Policy</a>`,
+    footerCredit:"Designed with ♥ for the UAE",
+    toastMsg:"✓  Reservation Request Sent!"
+  },
+  ar: {
+    locLeft:"📍 دبي مارينا، الإمارات العربية المتحدة",
+    locMid:"الأحد–الخميس: ٧ص–١١م | الجمعة–السبت: ٧ص–١٢ص",
+    heroEyebrow:"تأسس ٢٠١٨ · دبي مارينا",
+    heroTitle:"حيث يلتقي <em>الطعم</em><br>بالأصالة",
+    heroSub:"قهوة متخصصة محضّرة بحب، ومأكولات مستوحاة من التراث الإماراتي،<br>ودفء الضيافة العربية الأصيلة.",
+    heroCta1:"استكشف القائمة", heroCta2:"احجز طاولة", scrollHint:"للأسفل",
+    aboutImgLabel:"الأجواء الداخلية", aboutBadge:"سنوات", aboutEyebrow:"قصتنا",
+    aboutTitle:"وُلدنا من<br><em>روح</em> الجزيرة العربية",
+    aboutBody1:"تأسس مقهى زعفران برؤية واحدة: تكريم تقاليد القهوة العربية العريقة مع احتضان روح دبي الكوزموبوليتانية. كل كوب نقدمه هو حوار بين الموروث العريق والفن المعاصر.",
+    aboutBody2:"يحرص محمّص القهوة لدينا على اختيار حبوب أحادية المصدر من اليمن وإثيوبيا وكولومبيا، يمزجها مع الزعفران والهيل والورد المقطوف يدوياً من أسواق ديرة.",
+    aboutCta:"اكتشف نكهاتنا",
+    stat1:"سنوات من الخدمة", stat2:"ضيف سعيد", stat3:"مشروب مميز",
+    menuEyebrow:"محضّر بكل حب", menuTitle:"قائمتنا <em>المميزة</em>",
+    menuSub:"كل طبق ومشروب هو تحية لنكهات الإمارات، أُعيد تصورها لذوق العصر الحديث.",
+    galleryEyebrow:"رحلة بصرية", galleryTitle:"وليمة<br><em>للعيون</em>", galleryCta:"عرض المعرض كاملاً",
+    testEyebrow:"ماذا يقول ضيوفنا", testTitle:"كلمات من <em>القلب</em>",
+    resEyebrow:"احجز طاولتك", resTitle:"انضم إلينا لسهرة<br><em>لا تُنسى</em>",
+    resBody:"سواء كان قهوة صباحية هادئة أو عشاء احتفالي، نحن هنا لنجعل كل زيارة استثنائية. احجز طاولتك ودعنا نتكفل بالباقي.",
+    fl1:"اسمك الكريم", fl2:"رقم الجوال", fl3:"التاريخ", fl4:"الوقت", fl5:"عدد الضيوف", fl6:"المناسبة", fl7:"طلبات خاصة",
+    nameInputPH:"أحمد الراشدي", specialReqPH:"المتطلبات الغذائية، تفضيلات الجلوس، أو أي ترتيبات خاصة…",
+    resCta:"تأكيد الحجز", navCta:"احجز طاولة",
+    footerBrand:"حيث تلتقي تقاليد الضيافة العربية بفن صناعة القهوة الحديثة. ملاذ من النكهة في قلب دبي مارينا.",
+    fNavTitle:"روابط سريعة", fHoursTitle:"أوقات العمل", fLocTitle:"الموقع",
+    fh1:"الأحد – الخميس", fh2:"الجمعة – السبت",
+    fAddr1:"مارينا ووك، وحدة ٤ب", fAddr2:"دبي مارينا",
+    footerCopy:`© ٢٠٢٤ مقهى زعفران. جميع الحقوق محفوظة. · <a href="#">سياسة الخصوصية</a>`,
+    footerCredit:"صُمّم بـ ♥ للإمارات",
+    toastMsg:"✓  تم إرسال طلب الحجز!"
+  }
+};
 
-        <div class="container mx-auto px-6 lg:px-12 relative z-10">
-            <div class="flex flex-col lg:flex-row items-center gap-16">
-                <!-- Text -->
-                <div class="w-full lg:w-5/12 text-white" data-aos="fade-right">
-                    <h2 class="text-4xl md:text-5xl font-bold mb-6">
-                        <span class="en">Reserve Your Experience</span>
-                        <span class="ar">احجز تجربتك</span>
-                    </h2>
-                    <p class="text-white/80 text-lg mb-8">
-                        <span class="en">Secure your spot at Oasis & Oak. Whether it's a quiet morning coffee or an evening gathering, we look forward to hosting you.</span>
-                        <span class="ar">احجز مكانك في أواسيس وأوك. سواء كانت قهوة صباحية هادئة أو تجمع مسائي، نتطلع لاستضافتك.</span>
-                    </p>
-                    <div class="space-y-4">
-                        <div class="flex items-center gap-4">
-                            <i class="fa-regular fa-clock text-gold text-xl w-6"></i>
-                            <div>
-                                <p class="font-semibold"><span class="en">Opening Hours</span><span class="ar">ساعات العمل</span></p>
-                                <p class="text-white/70"><span class="en">Daily: 7:00 AM - 11:00 PM</span><span class="ar">يومياً: ٧:٠٠ ص - ١١:٠٠ م</span></p>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <i class="fa-solid fa-phone text-gold text-xl w-6"></i>
-                            <div>
-                                <p class="font-semibold"><span class="en">Contact</span><span class="ar">اتصل بنا</span></p>
-                                <p class="text-white/70">+971 4 123 4567</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+function setLang(lang) {
+  const t = T[lang];
+  const html = document.documentElement;
+  html.setAttribute('lang', lang);
+  html.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
 
-                <!-- Form -->
-                <div class="w-full lg:w-7/12" data-aos="fade-left">
-                    <div class="bg-white/10 backdrop-blur-xl border border-white/20 p-8 md:p-10 rounded-3xl shadow-2xl">
-                        <form class="space-y-6">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div>
-                                    <label class="block text-white/80 text-sm mb-2"><span class="en">Name</span><span class="ar">الاسم</span></label>
-                                    <input type="text" class="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:border-gold transition-colors" placeholder="John Doe">
-                                </div>
-                                <div>
-                                    <label class="block text-white/80 text-sm mb-2"><span class="en">Phone</span><span class="ar">رقم الهاتف</span></label>
-                                    <input type="tel" class="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:border-gold transition-colors" placeholder="+971 50 000 0000">
-                                </div>
-                                <div>
-                                    <label class="block text-white/80 text-sm mb-2"><span class="en">Date</span><span class="ar">التاريخ</span></label>
-                                    <input type="date" class="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:border-gold transition-colors">
-                                </div>
-                                <div>
-                                    <label class="block text-white/80 text-sm mb-2"><span class="en">Guests</span><span class="ar">عدد الضيوف</span></label>
-                                    <select class="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-gold transition-colors appearance-none">
-                                        <option value="1" class="text-dark">1 Person</option>
-                                        <option value="2" class="text-dark">2 People</option>
-                                        <option value="3" class="text-dark">3 People</option>
-                                        <option value="4" class="text-dark">4+ People</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <button type="button" class="w-full bg-gold text-white font-bold py-4 rounded-xl hover:bg-white hover:text-emerald transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                                <span class="en">Confirm Reservation</span>
-                                <span class="ar">تأكيد الحجز</span>
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  // Text-only ids
+  ['locLeft','locMid','heroEyebrow','heroCta1','heroCta2','scrollHint',
+   'aboutImgLabel','aboutBadge','aboutEyebrow','aboutCta',
+   'stat1','stat2','stat3','menuSub','galleryEyebrow','galleryCta',
+   'testEyebrow','resBody','fl1','fl2','fl3','fl4','fl5','fl6','fl7',
+   'resCta','navCta','footerBrand','fNavTitle','fHoursTitle','fLocTitle',
+   'fh1','fh2','fAddr1','fAddr2','footerCredit','toastMsg'
+  ].forEach(id => { const el=document.getElementById(id); if(el&&t[id]!==undefined) el.textContent=t[id]; });
 
-    <!-- Location Section -->
-    <section id="location" class="py-24 bg-beige">
-        <div class="container mx-auto px-6 lg:px-12">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-4xl md:text-5xl font-bold text-emerald">
-                    <span class="en">Find Us in Jumeirah</span>
-                    <span class="ar">تجدنا في جميرا</span>
-                </h2>
-                <div class="w-20 h-1 bg-gold mx-auto mt-6"></div>
-            </div>
+  // innerHTML ids
+  ['heroTitle','heroSub','aboutTitle','menuTitle','menuEyebrow','galleryTitle','testTitle','resEyebrow','resTitle','footerCopy'].forEach(id => {
+    const el=document.getElementById(id); if(el&&t[id]) el.innerHTML=t[id];
+  });
 
-            <div class="rounded-3xl overflow-hidden shadow-2xl h-[500px] relative" data-aos="zoom-in">
-                <!-- Mock Google Map Iframe (Using a placeholder map view of Dubai) -->
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3611.455431608226!2d55.22501931500858!3d25.15410798391642!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f6a5764125555%3A0x6b44588df88b0a51!2sJumeirah%20-%20Dubai!5e0!3m2!1sen!2sae!4v1680000000000!5m2!1sen!2sae" 
-                    width="100%" 
-                    height="100%" 
-                    style="border:0; filter: grayscale(20%) contrast(1.2);" 
-                    allowfullscreen="" 
-                    loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
-                
-                <!-- Overlay Card -->
-                <div class="absolute bottom-6 left-6 right-6 md:left-auto md:right-10 md:w-80 glass-card p-6 rounded-2xl shadow-xl rtl:md:right-auto rtl:md:left-10">
-                    <h3 class="text-xl font-bold text-emerald mb-2">Oasis & Oak</h3>
-                    <p class="text-emerald/80 text-sm mb-4">
-                        <span class="en">Jumeirah Beach Road,<br>Jumeirah 2, Dubai, UAE</span>
-                        <span class="ar">شارع شاطئ جميرا،<br>جميرا ٢، دبي، الإمارات</span>
-                    </p>
-                    <a href="#" class="text-gold font-semibold text-sm hover:text-emerald transition-colors flex items-center gap-2">
-                        <span class="en">Get Directions</span>
-                        <span class="ar">احصل على الاتجاهات</span>
-                        <i class="fa-solid fa-arrow-right rtl:rotate-180"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+  // Placeholders
+  const ni=document.getElementById('nameInput'); if(ni) ni.placeholder=t.nameInputPH;
+  const sr=document.getElementById('specialReq'); if(sr) sr.placeholder=t.specialReqPH;
 
-    <!-- Footer -->
-    <footer class="bg-dark text-white py-12 border-t border-white/10">
-        <div class="container mx-auto px-6 lg:px-12">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-                <div class="text-2xl font-bold text-gold flex items-center gap-2">
-                    <i class="fa-solid fa-leaf"></i>
-                    <span class="en">Oasis & Oak</span>
-                    <span class="ar">أواسيس وأوك</span>
-                </div>
-                
-                <div class="flex space-x-6 rtl:space-x-reverse">
-                    <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-gold hover:text-white transition-all duration-300">
-                        <i class="fa-brands fa-instagram"></i>
-                    </a>
-                    <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-gold hover:text-white transition-all duration-300">
-                        <i class="fa-brands fa-tiktok"></i>
-                    </a>
-                    <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-gold hover:text-white transition-all duration-300">
-                        <i class="fa-brands fa-facebook-f"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="mt-8 pt-8 border-t border-white/10 text-center text-white/50 text-sm flex flex-col md:flex-row justify-between items-center">
-                <p>
-                    <span class="en">&copy; 2023 Oasis & Oak. All rights reserved.</span>
-                    <span class="ar">&copy; ٢٠٢٣ أواسيس وأوك. جميع الحقوق محفوظة.</span>
-                </p>
-                <p class="mt-2 md:mt-0">
-                    <span class="en">Designed for Jumeirah, Dubai</span>
-                    <span class="ar">صُمم لجميرا، دبي</span>
-                </p>
-            </div>
-        </div>
-    </footer>
+  // data-en/data-ar swap
+  document.querySelectorAll('[data-en][data-ar]').forEach(el => {
+    el.textContent = el.getAttribute('data-'+lang)||el.getAttribute('data-en');
+  });
+  document.querySelectorAll('option[data-en][data-ar]').forEach(opt => {
+    opt.textContent = opt.getAttribute('data-'+lang)||opt.getAttribute('data-en');
+  });
 
-    <!-- Floating Action Button (WhatsApp) -->
-    <a href="https://wa.me/971500000000" target="_blank" class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl hover:scale-110 transition-transform duration-300 rtl:right-auto rtl:left-6">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
+  // Marquee
+  const items = lang==='ar' ? marqueeAR : marqueeEN;
+  const doubled = [...items,...items];
+  document.getElementById('marqueeInner').innerHTML = doubled.map(i=>`<span class="marquee-item">${i}<span class="dot">✦</span></span>`).join('');
 
-    <!-- Scripts -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        // Initialize AOS Animations
-        AOS.init({
-            once: true,
-            offset: 50,
-            duration: 800,
-            easing: 'ease-out-cubic',
-        });
+  // Toast position for RTL
+  const toast = document.getElementById('toast');
+  if(lang==='ar'){ toast.style.right='auto'; toast.style.left='40px'; toast.style.fontFamily="'Tajawal',sans-serif"; toast.style.letterSpacing='0'; }
+  else { toast.style.right='40px'; toast.style.left='auto'; toast.style.fontFamily='inherit'; toast.style.letterSpacing='0.15em'; }
+}
 
-        // Navbar Scroll Effect
-        window.addEventListener('scroll', () => {
-            const nav = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                nav.classList.add('py-2');
-                nav.classList.remove('py-4');
-            } else {
-                nav.classList.add('py-4');
-                nav.classList.remove('py-2');
-            }
-        });
+document.querySelectorAll('.lang-btn').forEach(btn => {
+  btn.addEventListener('click', () => setLang(btn.dataset.lang));
+});
 
-        // Language Toggle Logic
-        let currentLang = 'en';
-        function toggleLanguage() {
-            currentLang = currentLang === 'en' ? 'ar' : 'en';
-            document.documentElement.lang = currentLang;
-            document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
-            
-            // Re-trigger AOS to fix layout shifts on RTL change
-            setTimeout(() => {
-                AOS.refresh();
-            }, 100);
-        }
-    </script>
+// Cursor
+const cursor=document.getElementById('cursor'), ring=document.getElementById('cursorRing');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+'px';cursor.style.top=my+'px';});
+(function ar(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(ar);})();
+document.querySelectorAll('a,button,.menu-card,.testimonial-card').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cursor.classList.add('hover');ring.classList.add('hover');});
+  el.addEventListener('mouseleave',()=>{cursor.classList.remove('hover');ring.classList.remove('hover');});
+});
+
+// Nav scroll
+const navbar=document.getElementById('navbar');
+window.addEventListener('scroll',()=>{
+  navbar.classList.toggle('scrolled',window.scrollY>60);
+  document.getElementById('scrollHint').style.opacity=window.scrollY>50?'0':'0.7';
+});
+setTimeout(()=>{document.getElementById('scrollHint').style.opacity='0.7';},1600);
+
+// Reveal
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// Menu tabs
+document.querySelectorAll('.menu-tab').forEach(tab=>{
+  tab.addEventListener('click',function(){document.querySelectorAll('.menu-tab').forEach(t=>t.classList.remove('active'));this.classList.add('active');});
+});
+
+// Form
+function handleSubmit(e){
+  e.preventDefault();
+  const toast=document.getElementById('toast');
+  toast.style.transform='translateY(0)';toast.style.opacity='1';
+  setTimeout(()=>{toast.style.transform='translateY(80px)';toast.style.opacity='0';},3500);
+}
+</script>
 </body>
 </html>
