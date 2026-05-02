@@ -1,771 +1,795 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>لازيرو لاي | laziro laye</title>
-    <meta name="description" content="مقهى لازيرو لاي - قهوتك اللي تضبط مزاجك في السعودية">
-    
-    <!-- Google Fonts: Cairo -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <!-- FontAwesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <style>
-        /* --- المتغيرات والألوان --- */
-        :root {
-            --primary-dark: #3E2723; /* بني غامق */
-            --primary-light: #8D6E63; /* بني فاتح */
-            --accent: #D4B895; /* بيج/ذهبي */
-            --bg-color: #FDFBF7; /* أبيض كريمي */
-            --surface: #FFFFFF;
-            --text-main: #2C241B;
-            --text-muted: #665C54;
-            --transition: all 0.3s ease;
-        }
-
-        /* --- الإعدادات الأساسية --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Cairo', sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* --- شريط التنقل (Navbar) --- */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(253, 251, 247, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            z-index: 1000;
-            transition: var(--transition);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 5%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--primary-dark);
-            display: flex;
-            flex-direction: column;
-            line-height: 1.2;
-        }
-
-        .logo span {
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 2px;
-            color: var(--primary-light);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            font-weight: 600;
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover {
-            color: var(--accent);
-        }
-
-        .menu-toggle {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--primary-dark);
-        }
-
-        /* --- القسم الرئيسي (Hero) --- */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: linear-gradient(rgba(44, 36, 27, 0.7), rgba(44, 36, 27, 0.7)), url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&q=80&w=2000') center/cover;
-            color: var(--surface);
-            padding: 0 20px;
-        }
-
-        .hero-content h1 {
-            font-size: 4rem;
-            margin-bottom: 10px;
-            animation: fadeInUp 1s ease;
-        }
-
-        .hero-content p.ar-slogan {
-            font-size: 1.5rem;
-            margin-bottom: 5px;
-            color: var(--accent);
-            animation: fadeInUp 1.2s ease;
-        }
-
-        .hero-content p.en-slogan {
-            font-size: 1.1rem;
-            margin-bottom: 30px;
-            letter-spacing: 2px;
-            animation: fadeInUp 1.4s ease;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background-color: var(--accent);
-            color: var(--primary-dark);
-            border-radius: 30px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            transition: var(--transition);
-            border: 2px solid var(--accent);
-            cursor: pointer;
-            animation: fadeInUp 1.6s ease;
-        }
-
-        .btn:hover {
-            background-color: transparent;
-            color: var(--accent);
-        }
-
-        /* --- الأقسام العامة --- */
-        section {
-            padding: 80px 5%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            color: var(--primary-dark);
-            margin-bottom: 40px;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 3px;
-            background-color: var(--accent);
-            margin: 10px auto 0;
-            border-radius: 2px;
-        }
-
-        /* --- الأكثر مبيعاً (Featured) --- */
-        .featured-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .featured-card {
-            background: var(--surface);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-            transition: var(--transition);
-            text-align: center;
-            padding-bottom: 20px;
-        }
-
-        .featured-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .featured-card img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-        }
-
-        .featured-card h3 {
-            margin: 15px 0 5px;
-            color: var(--primary-dark);
-        }
-
-        .featured-card p {
-            color: var(--accent);
-            font-weight: 700;
-            font-size: 1.2rem;
-        }
-
-        /* --- المنيو (Menu) --- */
-        .menu-controls {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-
-        .search-bar {
-            width: 100%;
-            max-width: 400px;
-            padding: 12px 20px;
-            border: 1px solid #ddd;
-            border-radius: 30px;
-            font-size: 1rem;
-            outline: none;
-            transition: var(--transition);
-        }
-
-        .search-bar:focus {
-            border-color: var(--accent);
-            box-shadow: 0 0 10px rgba(212, 184, 149, 0.3);
-        }
-
-        .menu-filters {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .filter-btn {
-            padding: 8px 20px;
-            border: none;
-            background: var(--surface);
-            color: var(--text-muted);
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: 600;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            transition: var(--transition);
-        }
-
-        .filter-btn.active, .filter-btn:hover {
-            background: var(--primary-dark);
-            color: var(--surface);
-        }
-
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .menu-item {
-            background: var(--surface);
-            padding: 20px;
-            border-radius: 12px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.03);
-            border-right: 4px solid transparent;
-            transition: var(--transition);
-        }
-
-        .menu-item:hover {
-            border-right-color: var(--accent);
-            transform: translateX(-5px);
-        }
-
-        .item-info h4 {
-            font-size: 1.2rem;
-            color: var(--primary-dark);
-        }
-
-        .item-info p {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin-top: 5px;
-        }
-
-        .item-price {
-            font-weight: 800;
-            color: var(--primary-light);
-            font-size: 1.2rem;
-            white-space: nowrap;
-        }
-
-        /* --- قصتنا (About) --- */
-        .about-content {
-            display: flex;
-            align-items: center;
-            gap: 50px;
-            background: var(--surface);
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        }
-
-        .about-text {
-            flex: 1;
-        }
-
-        .about-text h3 {
-            font-size: 2rem;
-            color: var(--primary-dark);
-            margin-bottom: 20px;
-        }
-
-        .about-text p {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            margin-bottom: 15px;
-        }
-
-        .about-image {
-            flex: 1;
-        }
-
-        .about-image img {
-            width: 100%;
-            border-radius: 15px;
-            box-shadow: -10px 10px 0 var(--accent);
-        }
-
-        /* --- تواصل معنا (Contact) --- */
-        .contact-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-        }
-
-        .contact-info {
-            background: var(--surface);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-        }
-
-        .info-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-            margin-bottom: 25px;
-        }
-
-        .info-item i {
-            font-size: 1.5rem;
-            color: var(--accent);
-            margin-top: 5px;
-        }
-
-        .info-item h4 {
-            color: var(--primary-dark);
-            margin-bottom: 5px;
-        }
-
-        .info-item p, .info-item a {
-            color: var(--text-muted);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 45px;
-            height: 45px;
-            background: var(--bg-color);
-            border-radius: 50%;
-            color: var(--primary-dark);
-            font-size: 1.2rem;
-            transition: var(--transition);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .social-links a:hover {
-            background: var(--accent);
-            color: white;
-            transform: translateY(-3px);
-        }
-
-        .map-container iframe {
-            width: 100%;
-            height: 100%;
-            min-height: 350px;
-            border-radius: 15px;
-            border: none;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-        }
-
-        /* --- الفوتر --- */
-        footer {
-            background: var(--primary-dark);
-            color: white;
-            text-align: center;
-            padding: 20px;
-            margin-top: 50px;
-        }
-
-        /* --- الأنيميشن عند التمرير --- */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* --- التجاوب مع الشاشات (Mobile Responsive) --- */
-        @media (max-width: 768px) {
-            .nav-links {
-                position: absolute;
-                top: 100%;
-                right: -100%;
-                width: 100%;
-                background: var(--surface);
-                flex-direction: column;
-                align-items: center;
-                padding: 20px 0;
-                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-                transition: 0.4s;
-            }
-
-            .nav-links.active {
-                right: 0;
-            }
-
-            .menu-toggle {
-                display: block;
-            }
-
-            .hero-content h1 {
-                font-size: 3rem;
-            }
-
-            .about-content {
-                flex-direction: column;
-                padding: 20px;
-            }
-
-            .about-image img {
-                box-shadow: 0 10px 0 var(--accent);
-            }
-
-            .contact-container {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UNSEEN — What The World Doesn't Tell You</title>
+<link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #06080a;
+    --surface: #0b0e12;
+    --border: #161b22;
+    --text: #d4cfc8;
+    --muted: #6b6660;
+    --gold: #c9a84c;
+    --gold-dim: #7a6330;
+    --white: #eeeae3;
+    --danger: #8b2020;
+    --danger-bright: #c0392b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 19px;
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+
+  /* Noise texture */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9000;
+  }
+
+  /* ── INTRO SCREEN ── */
+  #intro {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    z-index: 8000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    transition: opacity 1s ease, visibility 1s ease;
+  }
+
+  #intro.gone { opacity: 0; visibility: hidden; pointer-events: none; }
+
+  .intro-line {
+    font-family: 'Space Mono', monospace;
+    font-size: clamp(10px, 2vw, 13px);
+    letter-spacing: 5px;
+    color: #222;
+    animation: reveal-line 0.6s ease forwards;
+    opacity: 0;
+  }
+
+  .intro-line:nth-child(1) { animation-delay: 0.3s; }
+  .intro-line:nth-child(2) { animation-delay: 0.9s; color: #444; }
+  .intro-line:nth-child(3) { animation-delay: 1.5s; color: #666; }
+  .intro-line:nth-child(4) { animation-delay: 2.1s; color: var(--gold); }
+
+  @keyframes reveal-line {
+    to { opacity: 1; }
+  }
+
+  .intro-btn {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 5px;
+    color: var(--gold);
+    border: 1px solid var(--gold-dim);
+    background: transparent;
+    padding: 14px 36px;
+    cursor: pointer;
+    margin-top: 30px;
+    opacity: 0;
+    animation: reveal-line 0.5s ease 3s forwards;
+    transition: background 0.3s, color 0.3s;
+  }
+
+  .intro-btn:hover {
+    background: var(--gold);
+    color: #000;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 24px;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 40%, #0f1a0d 0%, var(--bg) 70%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(201,168,76,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
+  }
+
+  .hero-eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 7px;
+    color: var(--gold-dim);
+    margin-bottom: 36px;
+    animation: rise 1.4s ease forwards;
+    opacity: 0;
+  }
+
+  .hero-title {
+    font-family: 'Syncopate', sans-serif;
+    font-size: clamp(52px, 14vw, 148px);
+    font-weight: 700;
+    line-height: 0.92;
+    letter-spacing: -3px;
+    color: var(--white);
+    animation: rise 1.4s ease 0.2s forwards;
+    opacity: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-title .accent { color: var(--gold); display: block; }
+
+  .hero-desc {
+    max-width: 580px;
+    font-size: clamp(16px, 2.5vw, 20px);
+    color: var(--muted);
+    font-style: italic;
+    margin: 36px auto 0;
+    animation: rise 1.4s ease 0.5s forwards;
+    opacity: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  @keyframes rise {
+    to { opacity: 1; transform: translateY(0); }
+    from { opacity: 0; transform: translateY(24px); }
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 500;
+    background: rgba(6,8,10,0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  nav::-webkit-scrollbar { display: none; }
+
+  nav a {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 18px 22px;
+    white-space: nowrap;
+    border-right: 1px solid var(--border);
+    transition: color 0.2s, background 0.2s;
+  }
+
+  nav a:hover { color: var(--gold); background: rgba(201,168,76,0.04); }
+
+  /* ── SECTIONS ── */
+  .section {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 110px 32px;
+    border-bottom: 1px solid var(--border);
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+
+  .section.visible { opacity: 1; transform: translateY(0); }
+
+  .sec-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 6px;
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+
+  .sec-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--gold-dim), transparent);
+    max-width: 200px;
+  }
+
+  .sec-title {
+    font-family: 'Syncopate', sans-serif;
+    font-size: clamp(26px, 6vw, 58px);
+    font-weight: 700;
+    line-height: 1.05;
+    color: var(--white);
+    margin-bottom: 44px;
+    letter-spacing: -1px;
+  }
+
+  .sec-title em {
+    color: var(--gold);
+    font-style: normal;
+  }
+
+  .lead {
+    font-size: clamp(18px, 2.8vw, 22px);
+    color: var(--white);
+    font-style: italic;
+    border-left: 2px solid var(--gold);
+    padding-left: 24px;
+    margin-bottom: 36px;
+    line-height: 1.6;
+  }
+
+  p { color: var(--text); margin-bottom: 22px; }
+
+  strong { color: var(--white); font-weight: 500; }
+
+  /* Fact box */
+  .fact {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    padding: 28px 32px;
+    margin: 40px 0;
+    position: relative;
+  }
+
+  .fact::before {
+    content: 'CONFIRMED';
+    font-family: 'Space Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 5px;
+    color: var(--gold);
+    opacity: 0.6;
+    display: block;
+    margin-bottom: 14px;
+  }
+
+  .fact p { margin: 0; color: var(--white); font-size: 17px; }
+
+  /* Danger box */
+  .danger-box {
+    background: rgba(139,32,32,0.08);
+    border: 1px solid rgba(139,32,32,0.3);
+    border-left: 3px solid var(--danger-bright);
+    padding: 28px 32px;
+    margin: 40px 0;
+  }
+
+  .danger-box::before {
+    content: 'THIS AFFECTS YOU DIRECTLY';
+    font-family: 'Space Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 5px;
+    color: var(--danger-bright);
+    opacity: 0.8;
+    display: block;
+    margin-bottom: 14px;
+  }
+
+  .danger-box p { margin: 0; color: var(--text); font-size: 17px; }
+
+  /* Pull quote */
+  .pq {
+    font-family: 'Syncopate', sans-serif;
+    font-size: clamp(20px, 4vw, 36px);
+    font-weight: 400;
+    color: var(--gold);
+    line-height: 1.2;
+    padding: 44px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    margin: 50px 0;
+    letter-spacing: 0px;
+  }
+
+  /* Timeline */
+  .tl { padding-left: 24px; border-left: 1px solid var(--border); margin: 40px 0; }
+
+  .tl-item { margin-bottom: 36px; position: relative; }
+
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -28px; top: 9px;
+    width: 7px; height: 7px;
+    background: var(--gold);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--gold);
+  }
+
+  .tl-year {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .tl-item p { margin: 0; font-size: 16px; color: var(--text); }
+
+  /* Grid cards */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    margin: 40px 0;
+    border: 1px solid var(--border);
+  }
+
+  .card {
+    background: var(--bg);
+    padding: 30px 28px;
+    transition: background 0.3s;
+  }
+
+  .card:hover { background: var(--surface); }
+
+  .card-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: var(--gold-dim);
+    margin-bottom: 14px;
+  }
+
+  .card h3 {
+    font-family: 'Syncopate', sans-serif;
+    font-size: 15px;
+    color: var(--white);
+    margin-bottom: 12px;
+    letter-spacing: 0px;
+    line-height: 1.3;
+  }
+
+  .card p { font-size: 14px; color: var(--muted); margin: 0; line-height: 1.6; }
+
+  /* Tags */
+  .tags { display: flex; flex-wrap: wrap; gap: 10px; margin: 30px 0; }
+
+  .tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    padding: 7px 14px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    transition: all 0.2s;
+  }
+
+  .tag:hover { border-color: var(--gold-dim); color: var(--gold); }
+
+  /* Action list */
+  .actions { list-style: none; margin: 36px 0; }
+
+  .actions li {
+    display: flex;
+    gap: 22px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: flex-start;
+  }
+
+  .actions li .n {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--gold);
+    letter-spacing: 2px;
+    min-width: 28px;
+    padding-top: 4px;
+  }
+
+  .actions li span:last-child { font-size: 16px; color: var(--text); }
+
+  /* Redacted */
+  .rx {
+    background: var(--white);
+    color: var(--white);
+    cursor: pointer;
+    padding: 1px 4px;
+    transition: all 0.4s;
+    user-select: none;
+    border-radius: 2px;
+  }
+  .rx:hover, .rx.open { background: transparent; color: var(--danger-bright); }
+
+  /* Counter bar */
+  .counter-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin: 44px 0;
+  }
+
+  .counter-cell {
+    background: var(--bg);
+    padding: 28px 24px;
+    text-align: center;
+  }
+
+  .counter-num {
+    font-family: 'Syncopate', sans-serif;
+    font-size: clamp(22px, 4vw, 36px);
+    color: var(--gold);
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .counter-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: var(--muted);
+  }
+
+  /* FOOTER */
+  footer {
+    background: #000;
+    text-align: center;
+    padding: 100px 30px;
+    border-top: 1px solid var(--border);
+  }
+
+  .footer-title {
+    font-family: 'Syncopate', sans-serif;
+    font-size: clamp(32px, 8vw, 90px);
+    font-weight: 700;
+    color: #111;
+    letter-spacing: 2px;
+    line-height: 1;
+    margin-bottom: 40px;
+  }
+
+  .footer-title span { color: var(--gold-dim); }
+
+  footer p {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: #222;
+    margin-bottom: 8px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .top-bar {
+    background: var(--gold);
+    color: #000;
+    text-align: center;
+    padding: 11px;
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 4px;
+  }
+
+  @media (max-width: 600px) {
+    .section { padding: 70px 20px; }
+    nav a { padding: 16px 16px; }
+  }
+</style>
 </head>
 <body>
 
-    <!-- شريط التنقل -->
-    <header>
-        <nav>
-            <a href="#home" class="logo">
-                لازيرو لاي
-                <span>LAZIRO LAYE</span>
-            </a>
-            <ul class="nav-links">
-                <li><a href="#home">الرئيسية</a></li>
-                <li><a href="#menu">المنيو</a></li>
-                <li><a href="#about">قصتنا</a></li>
-                <li><a href="#contact">تواصل معنا</a></li>
-            </ul>
-            <div class="menu-toggle">
-                <i class="fas fa-bars"></i>
-            </div>
-        </nav>
-    </header>
+<!-- INTRO SCREEN -->
+<div id="intro">
+  <p class="intro-line">LOADING DOCUMENT...</p>
+  <p class="intro-line">VERIFYING SOURCES...</p>
+  <p class="intro-line">ALL CONTENTS CONFIRMED FROM PUBLIC RECORD</p>
+  <p class="intro-line">YOU CANNOT UNKNOW WHAT YOU ARE ABOUT TO READ</p>
+  <button class="intro-btn" onclick="document.getElementById('intro').classList.add('gone')">I UNDERSTAND — ENTER</button>
+</div>
 
-    <!-- القسم الرئيسي -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>لازيرو لاي</h1>
-            <p class="ar-slogan">قهوتك اللي تضبط مزاجك</p>
-            <p class="en-slogan">Crafting your perfect cup</p>
-            <a href="#menu" class="btn">تصفح المنيو</a>
-        </div>
-    </section>
+<div class="top-bar">⚠ EVERY CLAIM ON THIS PAGE IS SOURCED FROM DECLASSIFIED DOCUMENTS, COURT RECORDS, AND PUBLISHED INVESTIGATIVE JOURNALISM ⚠</div>
 
-    <!-- الأكثر مبيعاً -->
-    <section id="featured" class="reveal">
-        <h2 class="section-title">الأكثر مبيعاً</h2>
-        <div class="featured-grid">
-            <div class="featured-card">
-                <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&q=80&w=600" alt="V60">
-                <h3>ڤي 60 - V60</h3>
-                <p>22 ﷼</p>
-            </div>
-            <div class="featured-card">
-                <img src="https://images.unsplash.com/photo-1578314675249-a6910f80cc4e?auto=format&fit=crop&q=80&w=600" alt="Flat White">
-                <h3>فلات وايت</h3>
-                <p>18 ﷼</p>
-            </div>
-            <div class="featured-card">
-                <img src="https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&q=80&w=600" alt="San Sebastian">
-                <h3>سان سباستيان</h3>
-                <p>25 ﷼</p>
-            </div>
-        </div>
-    </section>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-eyebrow">DOCUMENT 001 — GLOBAL EDITION</div>
+  <h1 class="hero-title">UN<span class="accent">SEEN.</span></h1>
+  <p class="hero-desc">The documented truths that powerful institutions spend enormous resources ensuring you never connect into a single picture.</p>
+</section>
 
-    <!-- المنيو -->
-    <section id="menu" class="reveal">
-        <h2 class="section-title">المنيو</h2>
-        
-        <div class="menu-controls">
-            <input type="text" id="searchInput" class="search-bar" placeholder="ابحث عن مشروبك المفضل...">
-            <div class="menu-filters">
-                <button class="filter-btn active" data-filter="all">الكل</button>
-                <button class="filter-btn" data-filter="coffee">قهوة</button>
-                <button class="filter-btn" data-filter="tea">شاي</button>
-                <button class="filter-btn" data-filter="cold">مشروبات باردة</button>
-                <button class="filter-btn" data-filter="dessert">حلى</button>
-            </div>
-        </div>
+<!-- NAV -->
+<nav>
+  <a href="#surveillance">SURVEILLANCE</a>
+  <a href="#pharma">PHARMA</a>
+  <a href="#weapons">ARMS TRADE</a>
+  <a href="#epstein">EPSTEIN</a>
+  <a href="#organs">ORGAN TRADE</a>
+  <a href="#environment">ECOCIDE</a>
+  <a href="#cia">INTELLIGENCE</a>
+  <a href="#pattern">THE PATTERN</a>
+  <a href="#you">WHAT NOW</a>
+</nav>
 
-        <div class="menu-grid" id="menuGrid">
-            <!-- قهوة -->
-            <div class="menu-item" data-category="coffee">
-                <div class="item-info">
-                    <h4>إسبريسو</h4>
-                    <p>جرعة مكثفة من القهوة المختصة</p>
-                </div>
-                <div class="item-price">12 ﷼</div>
-            </div>
-            <div class="menu-item" data-category="coffee">
-                <div class="item-info">
-                    <h4>فلات وايت</h4>
-                    <p>إسبريسو مع حليب مبخر بطبقة خفيفة</p>
-                </div>
-                <div class="item-price">18 ﷼</div>
-            </div>
-            <div class="menu-item" data-category="coffee">
-                <div class="item-info">
-                    <h4>ڤي 60</h4>
-                    <p>قهوة مقطرة بعناية لإبراز الإيحاءات</p>
-                </div>
-                <div class="item-price">22 ﷼</div>
-            </div>
+<!-- SURVEILLANCE -->
+<section class="section" id="surveillance">
+  <div class="sec-label">01 — SURVEILLANCE</div>
+  <h2 class="sec-title">THEY ARE <em>READING</em> THIS WITH YOU</h2>
+  <p class="lead">The most comprehensive surveillance system in human history was not built by a dystopian regime in a science fiction novel. It was built by democracies. And it covers you.</p>
 
-            <!-- شاي -->
-            <div class="menu-item" data-category="tea">
-                <div class="item-info">
-                    <h4>شاي أحمر</h4>
-                    <p>شاي تلقيمة مخدر على الأصول</p>
-                </div>
-                <div class="item-price">8 ﷼</div>
-            </div>
-            <div class="menu-item" data-category="tea">
-                <div class="item-info">
-                    <h4>شاي كرك</h4>
-                    <p>شاي بالحليب مبهر بالهيل والزعفران</p>
-                </div>
-                <div class="item-price">12 ﷼</div>
-            </div>
+  <p>In 2013, NSA contractor Edward Snowden leaked documents proving that the United States had built a global surveillance infrastructure capable of intercepting virtually all digital communications on earth. The programme — called <strong>PRISM</strong> — collected data directly from the servers of Apple, Google, Facebook, Microsoft, Yahoo, and others. Not with warrants. Systematically.</p>
 
-            <!-- مشروبات باردة -->
-            <div class="menu-item" data-category="cold">
-                <div class="item-info">
-                    <h4>آيس سبانيش لاتيه</h4>
-                    <p>قهوة باردة مع الحليب المكثف المحلى</p>
-                </div>
-                <div class="item-price">22 ﷼</div>
-            </div>
-            <div class="menu-item" data-category="cold">
-                <div class="item-info">
-                    <h4>موهيتو باشن فروت</h4>
-                    <p>مشروب منعش بنكهة الباشن فروت والنعناع</p>
-                </div>
-                <div class="item-price">20 ﷼</div>
-            </div>
+  <p>The <strong>Five Eyes alliance</strong> — the US, UK, Canada, Australia, and New Zealand — share this surveillance data with each other, legally circumventing their own domestic laws. If US law prevents the NSA from spying on its own citizens, Britain's GCHQ does it instead, and shares the data. Every country does this for every other. It is fully documented.</p>
 
-            <!-- حلى -->
-            <div class="menu-item" data-category="dessert">
-                <div class="item-info">
-                    <h4>تشيز كيك سان سباستيان</h4>
-                    <p>مخبوزة ومحمرة من الخارج، كريمية من الداخل</p>
-                </div>
-                <div class="item-price">25 ﷼</div>
-            </div>
-            <div class="menu-item" data-category="dessert">
-                <div class="item-info">
-                    <h4>كوكيز كلاسيك</h4>
-                    <p>كوكيز طري محشو بقطع الشوكولاتة البلجيكية</p>
-                </div>
-                <div class="item-price">12 ﷼</div>
-            </div>
-        </div>
-    </section>
+  <div class="fact">
+    <p>The NSA's XKeyscore programme allowed analysts to search through the private emails, online chats, and browsing histories of millions of people worldwide with no prior authorisation. An analyst simply had to fill out a form justifying the search — which was never reviewed before the search was conducted. This is confirmed from Snowden's leaked documents.</p>
+  </div>
 
-    <!-- قصتنا -->
-    <section id="about" class="reveal">
-        <h2 class="section-title">قصتنا</h2>
-        <div class="about-content">
-            <div class="about-text">
-                <h3>يا هلا فيكم في لازيرو لاي</h3>
-                <p>بدينا شغفنا بالقهوة من حبنا لجمعتنا وتفاصيل يومنا. في "لازيرو لاي"، نؤمن إن القهوة مو مجرد مشروب، هي شعور يضبط مزاجك ويجمعك باللي تحبهم.</p>
-                <p>قهوتنا نحمصها ونحضرها بحب عشان تليق بذائقتكم. صممنا هالمكان ليكون مساحتكم الخاصة اللي تجمع بين أصالة الضيافة السعودية واللمسة العصرية المريحة.</p>
-                <p>حياكم الله، المكان مكانكم!</p>
-            </div>
-            <div class="about-image">
-                <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=800" alt="أجواء المقهى">
-            </div>
-        </div>
-    </section>
+  <p><strong>Pegasus spyware</strong> — developed by Israeli surveillance company NSO Group — has been used by governments across the Middle East, Africa, and Europe to spy on journalists, human rights activists, opposition politicians, and lawyers. Once installed on a phone, it gives operators complete access: messages, emails, calls, camera, microphone, location. All in real time. It was used to track associates of murdered journalist Jamal Khashoggi before his death.</p>
 
-    <!-- تواصل معنا -->
-    <section id="contact" class="reveal">
-        <h2 class="section-title">تواصل معنا</h2>
-        <div class="contact-container">
-            <div class="contact-info">
-                <div class="info-item">
-                    <i class="far fa-clock"></i>
-                    <div>
-                        <h4>أوقات العمل</h4>
-                        <p>الأحد - الأربعاء: 6:30 صباحاً - 1:00 فجراً</p>
-                        <p>الخميس: 6:30 صباحاً - 2:00 فجراً</p>
-                        <p>الجمعة: 1:00 مساءً - 2:00 فجراً</p>
-                        <p>السبت: 9:00 صباحاً - 1:30 فجراً</p>
-                    </div>
-                </div>
-                <div class="info-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <div>
-                        <h4>الموقع</h4>
-                        <p>المملكة العربية السعودية</p>
-                    </div>
-                </div>
-                <div class="info-item">
-                    <i class="fas fa-phone-alt"></i>
-                    <div>
-                        <h4>رقم التواصل</h4>
-                        <p dir="ltr">+966 50 000 0000</p>
-                    </div>
-                </div>
-                
-                <div class="social-links">
-                    <a href="https://wa.me/966500000000" target="_blank" title="واتساب"><i class="fab fa-whatsapp"></i></a>
-                    <a href="https://instagram.com/lazirolaye" target="_blank" title="إنستقرام"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-            
-            <div class="map-container">
-                <!-- يمكنك استبدال الرابط أدناه برابط خريطة المقهى الفعلي من جوجل ماب -->
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d463877.3124320822!2d46.93196627092176!3d24.72545537152062!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2f03890d489399%3A0xba974d1c98e79fd5!2sRiyadh%20Saudi%20Arabia!5e0!3m2!1sen!2s!4v1680000000000!5m2!1sen!2s" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-        </div>
-    </section>
+  <div class="danger-box">
+    <p>Your phone is the most powerful surveillance device ever built — and you carry it voluntarily. Every app you install is a potential data collection node. Your location, your contacts, your browsing habits, your voice — all of it is being stored somewhere by someone. This is not a theory. It is the documented business model of the global technology industry.</p>
+  </div>
 
-    <!-- الفوتر -->
-    <footer>
-        <p>جميع الحقوق محفوظة &copy; 2024 لازيرو لاي | laziro laye</p>
-    </footer>
+  <p><strong>China's Social Credit System</strong> is the most advanced implementation of surveillance-as-governance ever attempted. Cameras with facial recognition track citizens in public spaces. Online behaviour, purchases, social connections, and stated opinions are all fed into a score that determines whether you can travel, take out loans, or send your children to certain schools. As of 2024 versions of this system are being studied and partially adopted by governments across the world.</p>
 
-    <!-- سكربت التفاعلات -->
-    <script>
-        // 1. القائمة الجانبية للجوال
-        const menuToggle = document.querySelector('.menu-toggle');
-        const navLinks = document.querySelector('.nav-links');
+  <div class="pq">You are not the customer of the internet. You are the product. Your attention, your data, your behaviour — sold continuously to anyone who pays.</div>
+</section>
 
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
+<!-- PHARMA -->
+<section class="section" id="pharma">
+  <div class="sec-label">02 — PHARMACEUTICAL INDUSTRY</div>
+  <h2 class="sec-title">THE BUSINESS <em>MODEL</em> IS YOUR ILLNESS</h2>
+  <p class="lead">The global pharmaceutical industry does not profit from curing disease. It profits from managing disease chronically. These are not the same thing. That distinction has cost millions of lives.</p>
 
-        // إغلاق القائمة عند الضغط على أي رابط
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
-        });
+  <p>The Sackler family — owners of Purdue Pharma — developed and aggressively marketed OxyContin, a powerful opioid painkiller, from the late 1990s onwards. Internal company documents, later released through litigation, show that executives knew the drug was highly addictive and were causing widespread dependency. They continued marketing it anyway. They paid doctors to prescribe it. They funded research to suppress evidence of addiction.</p>
 
-        // 2. فلترة المنيو
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const menuItems = document.querySelectorAll('.menu-item');
+  <div class="counter-row">
+    <div class="counter-cell"><span class="counter-num">500,000+</span><span class="counter-label">OVERDOSE DEATHS LINKED TO OPIOIDS</span></div>
+    <div class="counter-cell"><span class="counter-num">$11B</span><span class="counter-label">SACKLER FAMILY PERSONAL FORTUNE</span></div>
+    <div class="counter-cell"><span class="counter-num">0</span><span class="counter-label">SACKLER FAMILY MEMBERS IN PRISON</span></div>
+    <div class="counter-cell"><span class="counter-num">$6B</span><span class="counter-label">SETTLEMENT — TAX DEDUCTIBLE</span></div>
+  </div>
 
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // إزالة التفعيل من كل الأزرار
-                filterBtns.forEach(b => b.classList.remove('active'));
-                // تفعيل الزر المضغوط
-                btn.classList.add('active');
+  <p><strong>The sugar conspiracy.</strong> In the 1960s, a group of Harvard scientists published research concluding that dietary fat — not sugar — was the primary driver of heart disease. The research was funded by the Sugar Research Foundation. This was concealed. It shaped fifty years of global dietary guidelines. The documents proving this were discovered in 2016 in university archives and published in JAMA Internal Medicine. The scientists involved were dead by then.</p>
 
-                const filterValue = btn.getAttribute('data-filter');
+  <div class="fact">
+    <p>Pharmaceutical companies routinely conduct clinical trials in developing countries — including across the Middle East, Africa, and Southeast Asia — where regulatory oversight is weaker, populations are more desperate, and the legal consequences of adverse outcomes are smaller. This is documented and legal. It is called regulatory arbitrage.</p>
+  </div>
 
-                menuItems.forEach(item => {
-                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
-                        item.style.display = 'flex';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
-            });
-        });
+  <p><strong>Vaccine patents during COVID-19.</strong> Pharmaceutical companies including Pfizer and Moderna — whose vaccines were substantially funded by public money, including US government investment — refused to waive intellectual property rights during the pandemic. This meant low-income countries could not manufacture generic versions while people died. The companies simultaneously reported record profits. India and South Africa led a coalition of over 100 nations demanding a waiver. The US, EU, and UK blocked it for over a year.</p>
+</section>
 
-        // 3. البحث في المنيو
-        const searchInput = document.getElementById('searchInput');
-        
-        searchInput.addEventListener('keyup', (e) => {
-            const searchValue = e.target.value.toLowerCase();
-            
-            // إرجاع الفلتر إلى "الكل" عند البحث
-            filterBtns.forEach(b => b.classList.remove('active'));
-            document.querySelector('[data-filter="all"]').classList.add('active');
+<!-- ARMS TRADE -->
+<section class="section" id="weapons">
+  <div class="sec-label">03 — THE ARMS TRADE</div>
+  <h2 class="sec-title">WAR IS <em>THE PRODUCT.</em> PEACE IS BAD FOR BUSINESS.</h2>
+  <p class="lead">The global arms trade generates over $2 trillion annually. Every weapon sold requires a conflict to justify it. The industry's lobbyists sit in every major government. Their customers are often both sides of the same war.</p>
 
-            menuItems.forEach(item => {
-                const itemName = item.querySelector('h4').textContent.toLowerCase();
-                const itemDesc = item.querySelector('p').textContent.toLowerCase();
-                
-                if (itemName.includes(searchValue) || itemDesc.includes(searchValue)) {
-                    item.style.display = 'flex';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-        });
+  <p>The United States is the world's largest arms exporter — responsible for roughly 40% of all global weapons sales. Its five largest defence contractors — Lockheed Martin, Raytheon, Boeing, Northrop Grumman, and General Dynamics — collectively spend hundreds of millions of dollars annually lobbying Congress. The people who decide whether America goes to war are funded by the people who profit when it does.</p>
 
-        // 4. حركات الظهور عند التمرير (Scroll Reveal)
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 100;
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
-                }
-            }
-        }
-        window.addEventListener("scroll", reveal);
-        reveal(); // تشغيلها مرة عند تحميل الصفحة
-    </script>
+  <p><strong>The Middle East is the world's largest arms import region.</strong> Between 2018 and 2022, the Middle East accounted for approximately 30% of all global arms imports. Saudi Arabia was the world's largest arms importer. Its primary suppliers: the United States, United Kingdom, and France — the same nations that sit on the UN Security Council and vote on resolutions about regional conflicts.</p>
+
+  <div class="fact">
+    <p>The UK sold over £23 billion worth of arms to Saudi Arabia between 2015 and 2023 — the period spanning the Saudi-led intervention in Yemen. UN investigations documented the use of UK-supplied weapons in strikes on hospitals, schools, markets, and civilian infrastructure. Arms sales continued throughout. A British court ruled the sales were unlawful in 2019. They resumed within months.</p>
+  </div>
+
+  <p><strong>The revolving door between defence and government</strong> is documented and continuous. US Defence Secretaries routinely come from defence contractor boards and return to them after government service. The same pattern exists in the UK, France, and across NATO allies. The people making decisions about which wars to fight and which weapons to buy have financial stakes in the answers.</p>
+
+  <div class="pq">The opposite of war is not peace. For the defence industry, the opposite of war is bankruptcy.</div>
+
+  <p><strong>Both sides.</strong> It has been documented multiple times that weapons sold by Western governments to one party in a conflict end up in the hands of the opposing party. In Syria, Libya, and Yemen, weapons ostensibly sold to allied governments were documented by UN monitors in the hands of multiple armed factions simultaneously. The manufacturers are paid either way.</p>
+</section>
+
+<!-- EPSTEIN -->
+<section class="section" id="epstein">
+  <div class="sec-label">04 — EPSTEIN</div>
+  <h2 class="sec-title">THE NETWORK THAT <em>PROTECTED ITSELF</em></h2>
+  <p class="lead">Jeffrey Epstein trafficked underage girls for decades. This is confirmed. What remains officially unresolved — and officially not pursued — is who he was working for, and why a man with no apparent legitimate income accumulated a private island, multiple mansions, and $500 million in assets.</p>
+
+  <p>Epstein was first arrested in 2006. Federal prosecutor Alexander Acosta gave him a secret plea deal: 13 months in a private wing of a county jail with work release 12 hours a day. The deal was made without notifying victims — a violation of federal law. When later asked why, Acosta reportedly told colleagues that Epstein <span class="rx" onclick="this.classList.toggle('open')">[REDACTED — CLICK TO REVEAL]</span> belonged to intelligence and to leave it alone.</p>
+
+  <div class="fact">
+    <p>Epstein's private jet — flight logs of which became public through litigation — carried an extraordinary concentration of global power: heads of state, royalty, Nobel laureates, tech executives, financiers, and politicians from multiple countries. The logs are public record. The investigations into those individuals have not been announced.</p>
+  </div>
+
+  <p>Epstein died in August 2019 in a maximum-security federal prison while awaiting trial on federal sex trafficking charges. Both cameras outside his cell malfunctioned simultaneously. His cellmate had been transferred the day before. The guards assigned to check on him were asleep and later falsified their log entries. The forensic pathologist hired by Epstein's brother concluded the physical evidence was more consistent with homicide by strangulation than suicide. The official finding was suicide. The FBI investigated and closed the case.</p>
+
+  <p>Ghislaine Maxwell — Epstein's primary associate and alleged recruiter — was convicted of sex trafficking in 2021. Prosecutors deliberately limited the scope of the trial. Her client list was never the target of the investigation. Victims' lawyers publicly objected. The list remains largely sealed. Courts have repeatedly blocked fuller disclosure.</p>
+
+  <div class="danger-box">
+    <p>The most significant unanswered question is structural, not personal: how does a man with no verifiable business generate $500 million, own properties across multiple countries, maintain relationships with the most powerful people on earth, receive extraordinary legal protection after a first arrest, and die in a maximum security prison under circumstances that a trained forensic pathologist called suspicious — without a single institution treating this as a priority?</p>
+  </div>
+
+  <p><strong>He was not alone.</strong> The Franklin Scandal in the 1980s. The UK Westminster paedophile network investigations of the 2000s. The NXIVM cult that specifically recruited and branded wealthy women. Operation Hydrant in the UK — which identified over 1,400 suspected perpetrators including politicians, entertainers, and media figures. The pattern of powerful networks, institutional protection, and incomplete accountability repeats identically across countries and decades.</p>
+</section>
+
+<!-- ORGAN TRADE -->
+<section class="section" id="organs">
+  <div class="sec-label">05 — ORGAN HARVESTING</div>
+  <h2 class="sec-title">ALIVE WHEN <em>THEY TAKE</em> THE ORGANS</h2>
+  <p class="lead">This is the most disturbing section of this document. It is also among the most thoroughly documented. Multiple independent international bodies have reached the same conclusion.</p>
+
+  <p>The <strong>China Tribunal</strong> — an independent tribunal chaired by Sir Geoffrey Nice QC, who prosecuted Slobodan Milosevic at The Hague — concluded in 2019 that China has been, and continues to be, harvesting organs from living prisoners of conscience. Primarily Falun Gong practitioners. Increasingly Uyghur Muslims. The organs are used to supply a transplant tourism industry where wealthy patients — including from the Middle East, Europe, and elsewhere — can receive transplants within days or weeks.</p>
+
+  <div class="fact">
+    <p>In every country in the world, waiting times for organ transplants are measured in months to years, because organs from voluntary donors are scarce. In China, waiting times are consistently days to weeks — implying organs are available on demand. The only way organs can be available on demand is if the supply is not dependent on voluntary death. The China Tribunal called this conclusion "certain beyond reasonable doubt."</p>
+  </div>
+
+  <p>This conclusion has been endorsed by the European Parliament, the US Congressional-Executive Commission on China, and independent medical researchers at multiple universities. The UN Special Rapporteur on Torture has written formally about it. The response from most governments has been diplomatic silence — because China is a $19 trillion economy and a critical trade partner.</p>
+
+  <p><strong>Transplant tourism</strong> — travelling to another country to purchase an organ — is documented as a global industry. Recipients have been documented from Japan, South Korea, Israel, Saudi Arabia, and across Europe. In some cases patients travelled without knowing where the organ originated. In others they were fully aware. The doctors who performed the procedures in the destination countries have rarely faced consequences.</p>
+
+  <div class="pq">The price of a human kidney on the international black market is approximately $150,000. The person it came from received nothing. Or was not asked.</div>
+</section>
+
+<!-- ECOCIDE -->
+<section class="section" id="environment">
+  <div class="sec-label">06 — ECOCIDE</div>
+  <h2 class="sec-title">THEY KNEW THE <em>PLANET WAS DYING</em> IN 1977</h2>
+  <p class="lead">ExxonMobil's own scientists accurately predicted global warming and its consequences in the late 1970s. The company then spent decades and hundreds of millions of dollars funding campaigns to deny it.</p>
+
+  <p>Internal Exxon documents, first published by the Los Angeles Times and Columbia University's Energy and Environment Reporting Project in 2015, show that company scientists produced detailed, accurate climate models as early as 1977. The models predicted rising temperatures, sea level rise, and catastrophic disruption to ecosystems. The conclusions were kept internal. The company simultaneously funded external campaigns promoting climate denial, creating the appearance of scientific controversy where their own scientists knew none existed.</p>
+
+  <div class="fact">
+    <p>A 2021 study found that just 20 companies are responsible for 35% of all global carbon emissions since 1965. Five of them — Saudi Aramco, Chevron, ExxonMobil, BP, and Shell — alone account for 12.5%. Saudi Aramco is the single largest contributor to global industrial greenhouse gas emissions in history.</p>
+  </div>
+
+  <p><strong>Plastic.</strong> The recycling symbol on plastic — the three arrows forming a triangle — was invented and promoted by the plastics industry in 1970 to create the impression that plastic was recyclable and therefore acceptable. Internal industry documents, released through litigation in 2020, show that industry leaders knew as early as the 1970s that plastic recycling was economically unviable at scale and would never work. They promoted it anyway to prevent bans and regulation. Less than 9% of all plastic ever produced has been recycled.</p>
+
+  <p><strong>The Middle East's specific exposure.</strong> Climate models consistently identify the Arabian Peninsula and surrounding region as among the most severely impacted areas on earth under current emissions trajectories. Wet bulb temperatures — the combination of heat and humidity beyond which the human body cannot cool itself and death follows within hours — are projected to regularly exceed survivable limits across parts of the Gulf, Iraq, and surrounding areas within decades. This is mainstream climate science, not speculation.</p>
+</section>
+
+<!-- CIA / INTELLIGENCE -->
+<section class="section" id="cia">
+  <div class="sec-label">07 — INTELLIGENCE AGENCIES</div>
+  <h2 class="sec-title">THE OPERATIONS <em>NOBODY</em> VOTED FOR</h2>
+  <p class="lead">Intelligence agencies in every major country operate with minimal democratic oversight, classified budgets, and a documented history of actions that would be considered criminal if performed by anyone else.</p>
+
+  <p><strong>MKUltra (1953–1973).</strong> The CIA ran covert mind control experiments on unwitting citizens — including in Canada — for two decades. Subjects were given forced LSD, subjected to electroshock therapy, sleep deprivation, and psychological torture without consent. The director destroyed most files in 1973 before a Senate investigation. Nobody went to prison. This is declassified and confirmed.</p>
+
+  <p><strong>Operation Cyclone.</strong> From 1979 to 1989, the CIA funded, armed, and trained Mujahideen fighters in Afghanistan to fight Soviet forces — the largest covert operation in CIA history. The operation directly created and empowered networks that would later form Al-Qaeda and the Taliban. This is documented in declassified government records and confirmed by participants including Zbigniew Brzezinski, who called the outcome "a few stirred-up Muslims" worth the strategic gain against the Soviets.</p>
+
+  <div class="fact">
+    <p>Between 1953 and 2003, the CIA was directly involved in regime change operations in Iran (1953), Guatemala (1954), Congo (1960), Chile (1973), and multiple other countries. In each case democratically elected or popular governments were replaced with authoritarian regimes more amenable to Western economic and strategic interests. These operations are confirmed in declassified documents. Their consequences are still being lived in those countries today.</p>
+  </div>
+
+  <p><strong>The drone programme.</strong> The United States conducted thousands of drone strikes across Pakistan, Yemen, Somalia, and Afghanistan over two decades, under legal frameworks that were classified and never subject to public or democratic scrutiny. A 2019 report by the UN Special Rapporteur on Extrajudicial Killings concluded that many strikes violated international humanitarian law. Internal documents leaked by whistleblower Daniel Hale showed that in one five-month period, 90% of people killed in drone strikes were not the intended targets.</p>
+
+  <div class="pq">Every government that has ever used the phrase "national security" to classify a document has also used it to conceal a crime.</div>
+</section>
+
+<!-- THE PATTERN -->
+<section class="section" id="pattern">
+  <div class="sec-label">08 — THE PATTERN</div>
+  <h2 class="sec-title">IT IS <em>NEVER</em> ISOLATED</h2>
+  <p class="lead">Once you have read everything above, the most important thing to understand is this: none of it is accidental. None of it is the result of a few bad individuals. It is structural.</p>
+
+  <div class="grid">
+    <div class="card">
+      <div class="card-num">MECHANISM 01</div>
+      <h3>REGULATORY CAPTURE</h3>
+      <p>Industries fund the political campaigns of the people who regulate them. Regulators become the industry's defenders rather than the public's.</p>
+    </div>
+    <div class="card">
+      <div class="card-num">MECHANISM 02</div>
+      <h3>THE REVOLVING DOOR</h3>
+      <p>Government officials move to industry. Industry executives move to government. The same people make the rules and profit from them.</p>
+    </div>
+    <div class="card">
+      <div class="card-num">MECHANISM 03</div>
+      <h3>CLASSIFICATION</h3>
+      <p>Governments classify information not to protect national security but to protect institutional reputation. Most classified information is embarrassing, not strategic.</p>
+    </div>
+    <div class="card">
+      <div class="card-num">MECHANISM 04</div>
+      <h3>MANUFACTURED CONSENT</h3>
+      <p>Media ownership concentration means the same financial interests that own banks and defence contractors own the outlets reporting on them.</p>
+    </div>
+    <div class="card">
+      <div class="card-num">MECHANISM 05</div>
+      <h3>STRATEGIC DELAY</h3>
+      <p>Institutions under scrutiny use legal processes, appeals, and procedural delays to outlast public attention. The news cycle is 48 hours. Trials take years.</p>
+    </div>
+    <div class="card">
+      <div class="card-num">MECHANISM 06</div>
+      <h3>SELECTIVE PROSECUTION</h3>
+      <p>The law is applied with full force to those without resources and with creative flexibility to those with them. This is not corruption. It is the system functioning as designed.</p>
+    </div>
+  </div>
+
+  <p>The common thread across surveillance capitalism, the opioid crisis, illegal arms deals, organ harvesting, climate denial, and intelligence abuses is not ethnicity, religion, or nationality. It is the predictable behaviour of concentrated power operating without accountability. It looks the same in Washington, London, Beijing, Riyadh, and Moscow because human institutional behavior under those conditions is consistent across cultures.</p>
+
+  <div class="fact">
+    <p>Historian Barbara Tuchman documented in "The March of Folly" that governments throughout history have consistently pursued policies they knew to be against their own interests and the interests of their citizens — not out of ignorance, but because the institutional incentives of those in power pointed in a different direction. Nothing in the modern era contradicts her conclusion.</p>
+  </div>
+</section>
+
+<!-- WHAT NOW -->
+<section class="section" id="you">
+  <div class="sec-label">09 — WHAT YOU DO WITH THIS</div>
+  <h2 class="sec-title">KNOWING IS THE <em>BEGINNING.</em> NOT THE END.</h2>
+  <p class="lead">Information without direction becomes paralysis or cynicism. Neither helps anyone. Here is what actually matters after you have read this.</p>
+
+  <ul class="actions">
+    <li>
+      <span class="n">01</span>
+      <span>Ask who benefits from every story you are told. Follow the money before you follow the narrative. The most effective propaganda does not look like propaganda — it looks like common sense.</span>
+    </li>
+    <li>
+      <span class="n">02</span>
+      <span>Read primary sources. Court documents, parliamentary reports, declassified files, corporate disclosures. They are public. They are boring. They are more revealing than any news broadcast.</span>
+    </li>
+    <li>
+      <span class="n">03</span>
+      <span>Understand your digital exposure. Use encrypted messaging. Understand what your apps collect. Treat your phone as a device that is continuously transmitting — because it is.</span>
+    </li>
+    <li>
+      <span class="n">04</span>
+      <span>Distinguish between documented reality and speculation. Everything on this page has a source. The moment you move from documented facts to unverified claims, you lose credibility and become easier to dismiss.</span>
+    </li>
+    <li>
+      <span class="n">05</span>
+      <span>Support the people doing the actual work. Investigative journalists, human rights lawyers, whistleblower protection organisations. They are underfunded. They are the only ones who create any accountability.</span>
+    </li>
+    <li>
+      <span class="n">06</span>
+      <span>Do not mistake awareness for action. Knowing the truth and sharing it is not the same as changing anything. Every system that has ever been fundamentally reformed was reformed by sustained collective pressure — not by individuals who simply knew more.</span>
+    </li>
+    <li>
+      <span class="n">07</span>
+      <span>Apply the same critical lens to narratives you already agree with. Confirmation bias is how intelligent people are controlled. The truth does not require you to lower your standards to accept it.</span>
+    </li>
+  </ul>
+
+  <div class="pq">The question is not whether you are being misled. The question is which misleading narratives you have stopped examining because they are comfortable.</div>
+
+  <p style="color:var(--muted); font-size:15px; font-style:italic;">Further reading: Perversion of Justice — Julie K. Brown / The Shock Doctrine — Naomi Klein / The Dark Net — Jamie Bartlett / No Logo — Naomi Klein / Confessions of an Economic Hit Man — John Perkins / Manufacturing Consent — Chomsky & Herman / propublica.org / icij.org / theintercept.com</p>
+</section>
+
+<footer>
+  <div class="footer-title">THEY KNEW.<br><span>NOW YOU DO.</span></div>
+  <p>ALL INFORMATION SOURCED FROM DECLASSIFIED DOCUMENTS, COURT RECORDS, UN REPORTS, SENATE INVESTIGATIONS, AND PUBLISHED INVESTIGATIVE JOURNALISM</p>
+  <p style="margin-top:12px;">NO THEORIES. NO SPECULATION. ONLY WHAT IS ALREADY KNOWN AND DOCUMENTED.</p>
+  <p style="margin-top:12px;">SHARE THIS WITH SOMEONE WHO IS READY TO KNOW.</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.06 });
+
+  document.querySelectorAll('.section').forEach(s => observer.observe(s));
+
+  // Redacted
+  document.querySelectorAll('.rx').forEach(el => {
+    el.title = 'Click to reveal';
+  });
+</script>
 </body>
 </html>
